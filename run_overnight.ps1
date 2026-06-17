@@ -64,13 +64,24 @@ Started:      $stamp
 "@ -Encoding utf8
 }
 
-# --- build the researcher command -------------------------------------------
-$argList = @('-m','autoresearch.researcher','--budget',"$Budget")
-if ($NoLLM) { $argList += '--no-llm' }
-$cmdStr = "python $($argList -join ' ')"
+# --- locate Python (works on any forked machine, not a hard-coded path) ------
+$pyPrefix = 'python'
+if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
+    if     (Get-Command py      -ErrorAction SilentlyContinue) { $pyPrefix = 'py -3' }
+    elseif (Get-Command python3 -ErrorAction SilentlyContinue) { $pyPrefix = 'python3' }
+    else {
+        Write-Log "FATAL: no Python found on PATH (tried python, py -3, python3)."
+        Set-Status "ABORTED - Python not found"
+        exit 1
+    }
+}
+
+# --- build the researcher command --------------------------------------------
+$baseArgs = "-m autoresearch.researcher --budget $Budget"
+if ($NoLLM) { $baseArgs += ' --no-llm' }
 
 Write-Log "=== Overnight AutoResearch run started ==="
-Write-Log "cwd=$srcDir  cmd=$cmdStr  MaxRestarts=$MaxRestarts  MaxHours=$MaxHours"
+Write-Log "python=$pyPrefix  cwd=$srcDir  args=$baseArgs  MaxRestarts=$MaxRestarts  MaxHours=$MaxHours"
 Send-Telegram "Propeller overnight run started ($stamp). Budget=$Budget, cap=$MaxHours h."
 
 if (-not (Test-Path (Join-Path $srcDir 'autoresearch'))) {
@@ -97,7 +108,12 @@ while ($true) {
     }
 
     $attempt++
-    Write-Log "--- attempt $attempt / $MaxRestarts ---"
+    # First attempt starts (or continues) a run; every restart resumes the
+    # crashed run from data/research.db instead of starting a fresh one.
+    $resumeArg = ''
+    if ($attempt -gt 1) { $resumeArg = ' --resume' }
+    $cmdStr = "$pyPrefix $baseArgs$resumeArg"
+    Write-Log "--- attempt $attempt / $MaxRestarts : $cmdStr ---"
 
     # run the researcher, appending its stdout+stderr to our log
     Push-Location $srcDir

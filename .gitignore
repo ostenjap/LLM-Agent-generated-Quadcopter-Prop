@@ -1,1 +1,25 @@
+# Private planning note (kept local)
 Plan.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated run artifacts (recreated by running the loop)
+data/research.db
+data/research.db-wal
+data/research.db-shm
+data/optimization/
+data/RUN_STATUS.txt
+docs/logs/
+docs/pareto.png
+docs/research_journal.md
+
+# Generated geometry / CFD output
+cad/*.step
+cad/*.stp
+cad/*.stl
+cfd/*/
+STOP
