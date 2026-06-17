@@ -1,0 +1,3747 @@
+{
+  "objective": "Find Pareto-optimal 10-inch quadcopter propellers that maximize hover Figure of Merit, maximize tubercle noise reduction, and minimize blade mass, subject to structural margin >= 0, tip Mach < 0.6, and no blade-pass resonance.",
+  "directions": {
+    "figure_of_merit": "max",
+    "noise_reduction_dB": "max",
+    "blade_mass_g": "min"
+  },
+  "generations": 13,
+  "total_evaluated": 329,
+  "pareto_front": [
+    {
+      "objectives": {
+        "figure_of_merit": 0.85862,
+        "noise_reduction_dB": 1.3,
+        "blade_mass_g": 35.6006
+      },
+      "metrics": {
+        "thrust_N": 39.0072,
+        "power_W": 805.296,
+        "torque_Nm": 0.96125,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.2065,
+        "margin_of_safety": 5.5539,
+        "natural_freq_Hz": 204.73,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 47.73,
+        "thrust_to_weight": 83.307
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.029075647631653254,
+        "chord_tip_m": 0.014,
+        "twist_root_deg": 37.40991611282683,
+        "twist_tip_deg": 16.04381626882656,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03711414922622039,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.85651,
+        "noise_reduction_dB": 1.15,
+        "blade_mass_g": 32.956
+      },
+      "metrics": {
+        "thrust_N": 36.2371,
+        "power_W": 722.83,
+        "torque_Nm": 0.86281,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 13.1071,
+        "margin_of_safety": 5.1035,
+        "natural_freq_Hz": 194.0,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 45.086,
+        "thrust_to_weight": 81.931
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.027552267641272114,
+        "chord_tip_m": 0.014,
+        "twist_root_deg": 35.89800810964224,
+        "twist_tip_deg": 15.101554081445979,
+        "tubercle_amp_m": 0.002550437170423714,
+        "tubercle_wl_m": 0.05414066456265515,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.85548,
+        "noise_reduction_dB": 1.55,
+        "blade_mass_g": 24.6022
+      },
+      "metrics": {
+        "thrust_N": 31.1831,
+        "power_W": 577.705,
+        "torque_Nm": 0.68958,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 17.5545,
+        "margin_of_safety": 3.5572,
+        "natural_freq_Hz": 162.91,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 36.732,
+        "thrust_to_weight": 86.538
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.023136471826825586,
+        "chord_tip_m": 0.012916542142606728,
+        "twist_root_deg": 39.399781724690385,
+        "twist_tip_deg": 11.789681152784922,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.85156,
+        "noise_reduction_dB": 1.36,
+        "blade_mass_g": 21.5904
+      },
+      "metrics": {
+        "thrust_N": 27.5358,
+        "power_W": 481.585,
+        "torque_Nm": 0.57485,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.8379,
+        "margin_of_safety": 3.0327,
+        "natural_freq_Hz": 149.05,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 33.72,
+        "thrust_to_weight": 83.242
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021168245188446635,
+        "chord_tip_m": 0.012704752382659435,
+        "twist_root_deg": 37.82533504425795,
+        "twist_tip_deg": 10.19662059654155,
+        "tubercle_amp_m": 0.002483077201190801,
+        "tubercle_wl_m": 0.04127731962040309,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.85068,
+        "noise_reduction_dB": 1.46,
+        "blade_mass_g": 22.6482
+      },
+      "metrics": {
+        "thrust_N": 31.103,
+        "power_W": 578.728,
+        "torque_Nm": 0.69081,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 22.525,
+        "margin_of_safety": 2.5516,
+        "natural_freq_Hz": 148.06,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 34.778,
+        "thrust_to_weight": 91.165
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02102801681106458,
+        "chord_tip_m": 0.013772815888605456,
+        "twist_root_deg": 40.428093851108954,
+        "twist_tip_deg": 11.560167136251719,
+        "tubercle_amp_m": 0.002756982355631564,
+        "tubercle_wl_m": 0.039054827395695615,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.8466,
+        "noise_reduction_dB": 1.63,
+        "blade_mass_g": 21.2635
+      },
+      "metrics": {
+        "thrust_N": 33.4672,
+        "power_W": 649.064,
+        "torque_Nm": 0.77476,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 27.2224,
+        "margin_of_safety": 1.9388,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 33.393,
+        "thrust_to_weight": 102.162
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.013772815888605456,
+        "twist_root_deg": 37.44990968305717,
+        "twist_tip_deg": 14.7700224905123,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83997,
+        "noise_reduction_dB": 0.51,
+        "blade_mass_g": 18.4176
+      },
+      "metrics": {
+        "thrust_N": 22.0319,
+        "power_W": 349.426,
+        "torque_Nm": 0.4171,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 14.9212,
+        "margin_of_safety": 4.3615,
+        "natural_freq_Hz": 153.0,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 30.547,
+        "thrust_to_weight": 73.521
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021728919741166468,
+        "chord_tip_m": 0.009015869324624587,
+        "twist_root_deg": 38.17433420337152,
+        "twist_tip_deg": 7.4481324016777934,
+        "tubercle_amp_m": 0.0008301920643826226,
+        "tubercle_wl_m": 0.04621640472431402,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83779,
+        "noise_reduction_dB": 1.63,
+        "blade_mass_g": 21.2544
+      },
+      "metrics": {
+        "thrust_N": 36.1282,
+        "power_W": 735.656,
+        "torque_Nm": 0.87813,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 29.0036,
+        "margin_of_safety": 1.7583,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 33.384,
+        "thrust_to_weight": 110.316
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.0137650117512148,
+        "twist_root_deg": 33.85005670206194,
+        "twist_tip_deg": 18.152410038012935,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03568888362238898,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83677,
+        "noise_reduction_dB": 1.43,
+        "blade_mass_g": 20.4073
+      },
+      "metrics": {
+        "thrust_N": 23.0841,
+        "power_W": 376.184,
+        "torque_Nm": 0.44904,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 10.5456,
+        "margin_of_safety": 6.5861,
+        "natural_freq_Hz": 178.03,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 32.537,
+        "thrust_to_weight": 72.321
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02528298722862217,
+        "chord_tip_m": 0.0060892036412348175,
+        "twist_root_deg": 39.70876241782288,
+        "twist_tip_deg": 9.059771247387769,
+        "tubercle_amp_m": 0.002327562125031673,
+        "tubercle_wl_m": 0.04130544751021361,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83638,
+        "noise_reduction_dB": 1.44,
+        "blade_mass_g": 20.336
+      },
+      "metrics": {
+        "thrust_N": 23.0116,
+        "power_W": 374.587,
+        "torque_Nm": 0.44713,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 10.5147,
+        "margin_of_safety": 6.6084,
+        "natural_freq_Hz": 178.03,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 32.466,
+        "thrust_to_weight": 72.252
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02528298722862217,
+        "chord_tip_m": 0.0060115954882064854,
+        "twist_root_deg": 39.70876241782288,
+        "twist_tip_deg": 9.059771247387769,
+        "tubercle_amp_m": 0.002327562125031673,
+        "tubercle_wl_m": 0.04130544751021361,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83609,
+        "noise_reduction_dB": 1.02,
+        "blade_mass_g": 20.0396
+      },
+      "metrics": {
+        "thrust_N": 23.5881,
+        "power_W": 388.886,
+        "torque_Nm": 0.4642,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 14.3353,
+        "margin_of_safety": 4.5806,
+        "natural_freq_Hz": 170.25,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 32.169,
+        "thrust_to_weight": 74.745
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.024178176093277364,
+        "chord_tip_m": 0.0111479886720943,
+        "twist_root_deg": 29.89367289347159,
+        "twist_tip_deg": 12.83916493099433,
+        "tubercle_amp_m": 0.0019135539531240256,
+        "tubercle_wl_m": 0.0567779504388079,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83453,
+        "noise_reduction_dB": 0.94,
+        "blade_mass_g": 19.7346
+      },
+      "metrics": {
+        "thrust_N": 30.8486,
+        "power_W": 582.707,
+        "torque_Nm": 0.69555,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.1326,
+        "margin_of_safety": 3.1813,
+        "natural_freq_Hz": 154.79,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 31.864,
+        "thrust_to_weight": 98.688
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02198307985875834,
+        "chord_tip_m": 0.009996147497757242,
+        "twist_root_deg": 30.9143172832758,
+        "twist_tip_deg": 17.831337921654004,
+        "tubercle_amp_m": 0.0015979882851927074,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83423,
+        "noise_reduction_dB": 0.41,
+        "blade_mass_g": 16.5975
+      },
+      "metrics": {
+        "thrust_N": 22.2388,
+        "power_W": 356.797,
+        "torque_Nm": 0.42589,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 13.4638,
+        "margin_of_safety": 4.9418,
+        "natural_freq_Hz": 158.16,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 28.727,
+        "thrust_to_weight": 78.913
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022461074219959572,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 34.614297939775625,
+        "twist_tip_deg": 11.848578526364786,
+        "tubercle_amp_m": 0.00061021604992789,
+        "tubercle_wl_m": 0.03983033080738138,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83409,
+        "noise_reduction_dB": 0.62,
+        "blade_mass_g": 15.5277
+      },
+      "metrics": {
+        "thrust_N": 25.9548,
+        "power_W": 449.938,
+        "torque_Nm": 0.53707,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.7732,
+        "margin_of_safety": 2.8511,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 27.657,
+        "thrust_to_weight": 95.662
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.008214197624608314,
+        "twist_root_deg": 33.61016507063232,
+        "twist_tip_deg": 14.847333510559244,
+        "tubercle_amp_m": 0.0009212532746603412,
+        "tubercle_wl_m": 0.0363037777254483,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83301,
+        "noise_reduction_dB": 1.11,
+        "blade_mass_g": 19.2076
+      },
+      "metrics": {
+        "thrust_N": 18.2488,
+        "power_W": 265.607,
+        "torque_Nm": 0.31705,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 13.0428,
+        "margin_of_safety": 5.1336,
+        "natural_freq_Hz": 153.22,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 31.337,
+        "thrust_to_weight": 59.361
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021760666487553367,
+        "chord_tip_m": 0.009767597565909863,
+        "twist_root_deg": 31.68759921018865,
+        "twist_tip_deg": 6.0202304689570925,
+        "tubercle_amp_m": 0.0018561970017046193,
+        "tubercle_wl_m": 0.04902890495804783,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83289,
+        "noise_reduction_dB": 1.51,
+        "blade_mass_g": 15.4581
+      },
+      "metrics": {
+        "thrust_N": 21.2409,
+        "power_W": 333.589,
+        "torque_Nm": 0.39819,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.4745,
+        "margin_of_safety": 2.9073,
+        "natural_freq_Hz": 142.47,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 27.588,
+        "thrust_to_weight": 78.485
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020233713962303425,
+        "chord_tip_m": 0.011041350839062169,
+        "twist_root_deg": 37.93840852136446,
+        "twist_tip_deg": 8.566174893753951,
+        "tubercle_amp_m": 0.002543491409265395,
+        "tubercle_wl_m": 0.051605622515982684,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.83153,
+        "noise_reduction_dB": 1.56,
+        "blade_mass_g": 17.927
+      },
+      "metrics": {
+        "thrust_N": 25.079,
+        "power_W": 428.673,
+        "torque_Nm": 0.51169,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 18.217,
+        "margin_of_safety": 3.3915,
+        "natural_freq_Hz": 147.43,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 30.057,
+        "thrust_to_weight": 85.055
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020937330970057642,
+        "chord_tip_m": 0.009546344229050298,
+        "twist_root_deg": 43.6778192112781,
+        "twist_tip_deg": 8.706547498032188,
+        "tubercle_amp_m": 0.0025318233693354016,
+        "tubercle_wl_m": 0.03163645069378873,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82992,
+        "noise_reduction_dB": 0.0,
+        "blade_mass_g": 13.6659
+      },
+      "metrics": {
+        "thrust_N": 20.84,
+        "power_W": 325.35,
+        "torque_Nm": 0.38836,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.9849,
+        "margin_of_safety": 3.7101,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 25.796,
+        "thrust_to_weight": 82.354
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 33.78206215442886,
+        "twist_tip_deg": 11.714685605420815,
+        "tubercle_amp_m": 0.0,
+        "tubercle_wl_m": 0.031697590152779564,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82748,
+        "noise_reduction_dB": 1.16,
+        "blade_mass_g": 15.2821
+      },
+      "metrics": {
+        "thrust_N": 20.6595,
+        "power_W": 322.078,
+        "torque_Nm": 0.38445,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 18.8582,
+        "margin_of_safety": 3.2422,
+        "natural_freq_Hz": 145.39,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 27.412,
+        "thrust_to_weight": 76.827
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020647916648541265,
+        "chord_tip_m": 0.010324819694880647,
+        "twist_root_deg": 39.7342495677204,
+        "twist_tip_deg": 7.769749031575376,
+        "tubercle_amp_m": 0.0019155255083855487,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82545,
+        "noise_reduction_dB": 0.27,
+        "blade_mass_g": 13.6987
+      },
+      "metrics": {
+        "thrust_N": 18.6389,
+        "power_W": 276.68,
+        "torque_Nm": 0.33026,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.0599,
+        "margin_of_safety": 4.3121,
+        "natural_freq_Hz": 151.87,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 25.828,
+        "thrust_to_weight": 73.562
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021568483093085303,
+        "chord_tip_m": 0.007101616020332623,
+        "twist_root_deg": 31.717589923012326,
+        "twist_tip_deg": 11.00777209326408,
+        "tubercle_amp_m": 0.00040512955545828,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82416,
+        "noise_reduction_dB": 0.08,
+        "blade_mass_g": 13.6246
+      },
+      "metrics": {
+        "thrust_N": 18.1556,
+        "power_W": 266.406,
+        "torque_Nm": 0.318,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 14.8712,
+        "margin_of_safety": 4.3795,
+        "natural_freq_Hz": 151.36,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 25.754,
+        "thrust_to_weight": 71.861
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021496380501681185,
+        "chord_tip_m": 0.007101616020332623,
+        "twist_root_deg": 30.42634493852256,
+        "twist_tip_deg": 11.00777209326408,
+        "tubercle_amp_m": 0.00011552550838554878,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82409,
+        "noise_reduction_dB": 0.88,
+        "blade_mass_g": 13.6314
+      },
+      "metrics": {
+        "thrust_N": 18.1483,
+        "power_W": 266.265,
+        "torque_Nm": 0.31783,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.5196,
+        "margin_of_safety": 2.8987,
+        "natural_freq_Hz": 146.14,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 25.761,
+        "thrust_to_weight": 71.813
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02075402483980259,
+        "chord_tip_m": 0.012181270970028834,
+        "twist_root_deg": 34.69606186562252,
+        "twist_tip_deg": 8.664853208052184,
+        "tubercle_amp_m": 0.0015628646399756282,
+        "tubercle_wl_m": 0.05712854933198648,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.8239,
+        "noise_reduction_dB": 0.97,
+        "blade_mass_g": 14.0856
+      },
+      "metrics": {
+        "thrust_N": 23.0581,
+        "power_W": 381.415,
+        "torque_Nm": 0.45528,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 22.2247,
+        "margin_of_safety": 2.5996,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 26.215,
+        "thrust_to_weight": 89.66
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.009690329374347191,
+        "twist_root_deg": 29.678083619255204,
+        "twist_tip_deg": 14.987079961954489,
+        "tubercle_amp_m": 0.001535422124433902,
+        "tubercle_wl_m": 0.0608443571103417,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82376,
+        "noise_reduction_dB": 1.42,
+        "blade_mass_g": 14.1115
+      },
+      "metrics": {
+        "thrust_N": 17.9104,
+        "power_W": 261.152,
+        "torque_Nm": 0.31173,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 13.4317,
+        "margin_of_safety": 4.9561,
+        "natural_freq_Hz": 156.93,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 26.241,
+        "thrust_to_weight": 69.575
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022286439096723044,
+        "chord_tip_m": 0.0066454403038863664,
+        "twist_root_deg": 29.089961963584432,
+        "twist_tip_deg": 11.481404561962517,
+        "tubercle_amp_m": 0.00215022739659004,
+        "tubercle_wl_m": 0.030228116065039893,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82241,
+        "noise_reduction_dB": 1.54,
+        "blade_mass_g": 17.6339
+      },
+      "metrics": {
+        "thrust_N": 28.3131,
+        "power_W": 519.911,
+        "torque_Nm": 0.6206,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 23.3856,
+        "margin_of_safety": 2.4209,
+        "natural_freq_Hz": 149.02,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 29.764,
+        "thrust_to_weight": 96.969
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021164361463937915,
+        "chord_tip_m": 0.012330864315389984,
+        "twist_root_deg": 38.16726690815291,
+        "twist_tip_deg": 15.019762132874504,
+        "tubercle_amp_m": 0.0027815121914320845,
+        "tubercle_wl_m": 0.03333385389224632,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82092,
+        "noise_reduction_dB": 1.69,
+        "blade_mass_g": 20.0547
+      },
+      "metrics": {
+        "thrust_N": 33.3298,
+        "power_W": 665.25,
+        "torque_Nm": 0.79408,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 26.8072,
+        "margin_of_safety": 1.9843,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 32.184,
+        "thrust_to_weight": 105.565
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.012714772089698685,
+        "twist_root_deg": 45.0,
+        "twist_tip_deg": 14.476694637711844,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82059,
+        "noise_reduction_dB": 0.73,
+        "blade_mass_g": 13.3835
+      },
+      "metrics": {
+        "thrust_N": 21.5817,
+        "power_W": 346.771,
+        "torque_Nm": 0.41393,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.9545,
+        "margin_of_safety": 3.0091,
+        "natural_freq_Hz": 143.03,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 25.513,
+        "thrust_to_weight": 86.229
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02031249711203701,
+        "chord_tip_m": 0.008390245726374694,
+        "twist_root_deg": 28.769616063220298,
+        "twist_tip_deg": 14.987079961954489,
+        "tubercle_amp_m": 0.0011095392056429023,
+        "tubercle_wl_m": 0.05709242737279824,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.82013,
+        "noise_reduction_dB": 1.64,
+        "blade_mass_g": 16.794
+      },
+      "metrics": {
+        "thrust_N": 23.9105,
+        "power_W": 404.613,
+        "torque_Nm": 0.48297,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.6822,
+        "margin_of_safety": 3.7955,
+        "natural_freq_Hz": 149.4,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 28.924,
+        "thrust_to_weight": 84.269
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02121781955722448,
+        "chord_tip_m": 0.007982178343822706,
+        "twist_root_deg": 45.0,
+        "twist_tip_deg": 8.706547498032188,
+        "tubercle_amp_m": 0.0025318233693354016,
+        "tubercle_wl_m": 0.03437247177021176,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81976,
+        "noise_reduction_dB": 0.74,
+        "blade_mass_g": 13.0717
+      },
+      "metrics": {
+        "thrust_N": 21.5941,
+        "power_W": 347.419,
+        "torque_Nm": 0.4147,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.7761,
+        "margin_of_safety": 2.8506,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 25.201,
+        "thrust_to_weight": 87.346
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.008390245726374694,
+        "twist_root_deg": 28.769616063220298,
+        "twist_tip_deg": 15.125869160793506,
+        "tubercle_amp_m": 0.0011095392056429023,
+        "tubercle_wl_m": 0.05709242737279824,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81929,
+        "noise_reduction_dB": 0.91,
+        "blade_mass_g": 12.9274
+      },
+      "metrics": {
+        "thrust_N": 18.7483,
+        "power_W": 281.217,
+        "torque_Nm": 0.33568,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.8129,
+        "margin_of_safety": 2.8438,
+        "natural_freq_Hz": 146.14,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 25.057,
+        "thrust_to_weight": 76.271
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02075402483980259,
+        "chord_tip_m": 0.01120790531139889,
+        "twist_root_deg": 34.69606186562252,
+        "twist_tip_deg": 10.286818642522945,
+        "tubercle_amp_m": 0.0015628646399756282,
+        "tubercle_wl_m": 0.05712854933198648,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81913,
+        "noise_reduction_dB": 0.96,
+        "blade_mass_g": 12.7662
+      },
+      "metrics": {
+        "thrust_N": 21.075,
+        "power_W": 335.227,
+        "torque_Nm": 0.40015,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.2814,
+        "margin_of_safety": 2.9445,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 24.896,
+        "thrust_to_weight": 86.292
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.007980069236287093,
+        "twist_root_deg": 28.769616063220298,
+        "twist_tip_deg": 14.987079961954489,
+        "tubercle_amp_m": 0.0014246724834240739,
+        "tubercle_wl_m": 0.0608443571103417,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81667,
+        "noise_reduction_dB": 1.73,
+        "blade_mass_g": 19.4061
+      },
+      "metrics": {
+        "thrust_N": 32.831,
+        "power_W": 653.762,
+        "torque_Nm": 0.78037,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 26.3036,
+        "margin_of_safety": 2.0414,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 31.536,
+        "thrust_to_weight": 106.124
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.012126196486946652,
+        "twist_root_deg": 45.0,
+        "twist_tip_deg": 14.82495807231857,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81626,
+        "noise_reduction_dB": 1.72,
+        "blade_mass_g": 12.9891
+      },
+      "metrics": {
+        "thrust_N": 15.4419,
+        "power_W": 210.99,
+        "torque_Nm": 0.25185,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.1897,
+        "margin_of_safety": 5.5629,
+        "natural_freq_Hz": 167.94,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 25.119,
+        "thrust_to_weight": 62.666
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02385003842571178,
+        "chord_tip_m": 0.007208011784500128,
+        "twist_root_deg": 30.75966934850952,
+        "twist_tip_deg": 9.64584788007506,
+        "tubercle_amp_m": 0.002796320443247497,
+        "tubercle_wl_m": 0.030602755186758705,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81549,
+        "noise_reduction_dB": 1.8,
+        "blade_mass_g": 18.4635
+      },
+      "metrics": {
+        "thrust_N": 30.9286,
+        "power_W": 598.632,
+        "torque_Nm": 0.71456,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 22.7527,
+        "margin_of_safety": 2.5161,
+        "natural_freq_Hz": 145.1,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 30.593,
+        "thrust_to_weight": 103.055
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02060702257581437,
+        "chord_tip_m": 0.01049850765758915,
+        "twist_root_deg": 43.992422837588016,
+        "twist_tip_deg": 14.82495807231857,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.81229,
+        "noise_reduction_dB": 0.61,
+        "blade_mass_g": 11.1035
+      },
+      "metrics": {
+        "thrust_N": 17.58,
+        "power_W": 257.547,
+        "torque_Nm": 0.30742,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 21.019,
+        "margin_of_safety": 2.8061,
+        "natural_freq_Hz": 141.47,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 23.233,
+        "thrust_to_weight": 77.133
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02009183856110956,
+        "chord_tip_m": 0.009315813644940937,
+        "twist_root_deg": 28.755861330700075,
+        "twist_tip_deg": 12.890872954617901,
+        "tubercle_amp_m": 0.0009602532001618873,
+        "tubercle_wl_m": 0.04113729324698756,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.8073,
+        "noise_reduction_dB": 0.96,
+        "blade_mass_g": 12.3319
+      },
+      "metrics": {
+        "thrust_N": 12.8969,
+        "power_W": 162.828,
+        "torque_Nm": 0.19436,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.2265,
+        "margin_of_safety": 5.5432,
+        "natural_freq_Hz": 176.43,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 24.462,
+        "thrust_to_weight": 53.744
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.025056547316894683,
+        "chord_tip_m": 0.01054974923764547,
+        "twist_root_deg": 30.64495147714613,
+        "twist_tip_deg": 7.077210871242239,
+        "tubercle_amp_m": 0.0018161653857253735,
+        "tubercle_wl_m": 0.06895930875854459,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.80418,
+        "noise_reduction_dB": 1.52,
+        "blade_mass_g": 12.1091
+      },
+      "metrics": {
+        "thrust_N": 15.6593,
+        "power_W": 218.697,
+        "torque_Nm": 0.26105,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.3895,
+        "margin_of_safety": 5.4571,
+        "natural_freq_Hz": 166.76,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 24.239,
+        "thrust_to_weight": 65.856
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.023683020768793146,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 25.0,
+        "twist_tip_deg": 14.110005457017145,
+        "tubercle_amp_m": 0.0023346663741563582,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.80402,
+        "noise_reduction_dB": 0.0,
+        "blade_mass_g": 9.5825
+      },
+      "metrics": {
+        "thrust_N": 14.2501,
+        "power_W": 189.889,
+        "torque_Nm": 0.22666,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 17.4697,
+        "margin_of_safety": 3.5794,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 21.712,
+        "thrust_to_weight": 66.903
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.006876106271620535,
+        "twist_root_deg": 26.949457074143897,
+        "twist_tip_deg": 11.43601286814777,
+        "tubercle_amp_m": 0.0,
+        "tubercle_wl_m": 0.04289277541551005,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.80375,
+        "noise_reduction_dB": 1.92,
+        "blade_mass_g": 15.7
+      },
+      "metrics": {
+        "thrust_N": 27.53,
+        "power_W": 510.069,
+        "torque_Nm": 0.60885,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 21.3535,
+        "margin_of_safety": 2.7465,
+        "natural_freq_Hz": 142.01,
+        "bpf_Hz": 800.0,
+        "total_mass_g": 27.83,
+        "thrust_to_weight": 100.839
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020168428677817936,
+        "chord_tip_m": 0.008183102068171012,
+        "twist_root_deg": 42.14448356677209,
+        "twist_tip_deg": 15.525258672606606,
+        "tubercle_amp_m": 0.0028788063361569814,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 6,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.80331,
+        "noise_reduction_dB": 0.5,
+        "blade_mass_g": 10.7714
+      },
+      "metrics": {
+        "thrust_N": 14.972,
+        "power_W": 204.679,
+        "torque_Nm": 0.24432,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.7238,
+        "margin_of_safety": 3.7836,
+        "natural_freq_Hz": 146.19,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 22.901,
+        "thrust_to_weight": 66.643
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020762293196303523,
+        "chord_tip_m": 0.007896081737328775,
+        "twist_root_deg": 36.50589398382615,
+        "twist_tip_deg": 7.433467535972067,
+        "tubercle_amp_m": 0.0007557522899524424,
+        "tubercle_wl_m": 0.04942565391184839,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.80234,
+        "noise_reduction_dB": 1.0,
+        "blade_mass_g": 11.5796
+      },
+      "metrics": {
+        "thrust_N": 19.8918,
+        "power_W": 313.826,
+        "torque_Nm": 0.3746,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.0517,
+        "margin_of_safety": 3.1991,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 666.67,
+        "total_mass_g": 23.709,
+        "thrust_to_weight": 85.524
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.006289350320928184,
+        "twist_root_deg": 33.62626489998776,
+        "twist_tip_deg": 14.821122356478043,
+        "tubercle_amp_m": 0.001379276903388674,
+        "tubercle_wl_m": 0.042608028635205145,
+        "n_blades": 5,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79935,
+        "noise_reduction_dB": 0.86,
+        "blade_mass_g": 11.5135
+      },
+      "metrics": {
+        "thrust_N": 12.5205,
+        "power_W": 157.302,
+        "torque_Nm": 0.18776,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 11.0281,
+        "margin_of_safety": 6.2542,
+        "natural_freq_Hz": 180.74,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 23.643,
+        "thrust_to_weight": 53.982
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.025668083189741092,
+        "chord_tip_m": 0.008206909040604202,
+        "twist_root_deg": 25.472959175228734,
+        "twist_tip_deg": 10.381087014848259,
+        "tubercle_amp_m": 0.001535422124433902,
+        "tubercle_wl_m": 0.07,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79849,
+        "noise_reduction_dB": 1.13,
+        "blade_mass_g": 9.1761
+      },
+      "metrics": {
+        "thrust_N": 11.164,
+        "power_W": 132.586,
+        "torque_Nm": 0.15826,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 14.0962,
+        "margin_of_safety": 4.6753,
+        "natural_freq_Hz": 141.44,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 21.306,
+        "thrust_to_weight": 53.414
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02008670987068358,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 25.0,
+        "twist_tip_deg": 8.061516370534088,
+        "tubercle_amp_m": 0.0015404426079097047,
+        "tubercle_wl_m": 0.07,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79563,
+        "noise_reduction_dB": 0.59,
+        "blade_mass_g": 9.1138
+      },
+      "metrics": {
+        "thrust_N": 13.7811,
+        "power_W": 182.495,
+        "torque_Nm": 0.21784,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 18.6573,
+        "margin_of_safety": 3.2879,
+        "natural_freq_Hz": 150.35,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 21.243,
+        "thrust_to_weight": 66.129
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021352048285283518,
+        "chord_tip_m": 0.009315813644940937,
+        "twist_root_deg": 27.32791000528566,
+        "twist_tip_deg": 12.177038810630284,
+        "tubercle_amp_m": 0.0009602532001618873,
+        "tubercle_wl_m": 0.0392046323322091,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79487,
+        "noise_reduction_dB": 1.39,
+        "blade_mass_g": 10.2206
+      },
+      "metrics": {
+        "thrust_N": 13.7377,
+        "power_W": 181.807,
+        "torque_Nm": 0.21702,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 13.07,
+        "margin_of_safety": 5.1209,
+        "natural_freq_Hz": 172.34,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 22.35,
+        "thrust_to_weight": 62.656
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02447569855714351,
+        "chord_tip_m": 0.0073161571226733405,
+        "twist_root_deg": 29.126002363662565,
+        "twist_tip_deg": 12.312914217365797,
+        "tubercle_amp_m": 0.0023024219349813413,
+        "tubercle_wl_m": 0.06752626988064836,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79271,
+        "noise_reduction_dB": 0.32,
+        "blade_mass_g": 8.7824
+      },
+      "metrics": {
+        "thrust_N": 11.2261,
+        "power_W": 134.669,
+        "torque_Nm": 0.16075,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.9826,
+        "margin_of_safety": 4.0055,
+        "natural_freq_Hz": 149.47,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 20.912,
+        "thrust_to_weight": 54.722
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021226919933307012,
+        "chord_tip_m": 0.00879533906901599,
+        "twist_root_deg": 25.0,
+        "twist_tip_deg": 9.240704094893236,
+        "tubercle_amp_m": 0.0005028430902550282,
+        "tubercle_wl_m": 0.06111866181178417,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79136,
+        "noise_reduction_dB": 1.26,
+        "blade_mass_g": 9.7411
+      },
+      "metrics": {
+        "thrust_N": 12.7365,
+        "power_W": 163.02,
+        "torque_Nm": 0.19459,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.2315,
+        "margin_of_safety": 5.5405,
+        "natural_freq_Hz": 172.34,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 21.871,
+        "thrust_to_weight": 59.363
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02447569855714351,
+        "chord_tip_m": 0.006291271746641005,
+        "twist_root_deg": 27.398238892572138,
+        "twist_tip_deg": 12.312914217365797,
+        "tubercle_amp_m": 0.002011531798019873,
+        "tubercle_wl_m": 0.06752626988064836,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.79094,
+        "noise_reduction_dB": 0.69,
+        "blade_mass_g": 9.0569
+      },
+      "metrics": {
+        "thrust_N": 13.8664,
+        "power_W": 185.285,
+        "torque_Nm": 0.22117,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.9805,
+        "margin_of_safety": 3.7113,
+        "natural_freq_Hz": 155.72,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 21.187,
+        "thrust_to_weight": 66.717
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022114941057502894,
+        "chord_tip_m": 0.008182211698701968,
+        "twist_root_deg": 27.32791000528566,
+        "twist_tip_deg": 13.332448702895736,
+        "tubercle_amp_m": 0.00110581358885642,
+        "tubercle_wl_m": 0.03998307310388735,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78792,
+        "noise_reduction_dB": 1.86,
+        "blade_mass_g": 12.1373
+      },
+      "metrics": {
+        "thrust_N": 17.5694,
+        "power_W": 265.273,
+        "torque_Nm": 0.31665,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.4867,
+        "margin_of_safety": 4.1657,
+        "natural_freq_Hz": 158.7,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 24.267,
+        "thrust_to_weight": 73.803
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022538627413590903,
+        "chord_tip_m": 0.007697025348273861,
+        "twist_root_deg": 40.93997767243422,
+        "twist_tip_deg": 10.40326007786296,
+        "tubercle_amp_m": 0.0029600439320177745,
+        "tubercle_wl_m": 0.04880842563676745,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78752,
+        "noise_reduction_dB": 0.0,
+        "blade_mass_g": 8.492
+      },
+      "metrics": {
+        "thrust_N": 11.049,
+        "power_W": 132.361,
+        "torque_Nm": 0.15799,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.9678,
+        "margin_of_safety": 5.1691,
+        "natural_freq_Hz": 160.32,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 20.622,
+        "thrust_to_weight": 54.617
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022768067694016264,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 29.964578758916097,
+        "twist_tip_deg": 8.7955957041081,
+        "tubercle_amp_m": 0.0,
+        "tubercle_wl_m": 0.04796669337224898,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78731,
+        "noise_reduction_dB": 0.87,
+        "blade_mass_g": 7.3945
+      },
+      "metrics": {
+        "thrust_N": 10.1213,
+        "power_W": 116.077,
+        "torque_Nm": 0.13856,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.7921,
+        "margin_of_safety": 3.7642,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 19.524,
+        "thrust_to_weight": 52.844
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.007369480038225186,
+        "twist_root_deg": 30.07270380300791,
+        "twist_tip_deg": 6.580889275119304,
+        "tubercle_amp_m": 0.0012619843487311996,
+        "tubercle_wl_m": 0.07,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78551,
+        "noise_reduction_dB": 1.92,
+        "blade_mass_g": 11.8911
+      },
+      "metrics": {
+        "thrust_N": 17.2249,
+        "power_W": 258.298,
+        "torque_Nm": 0.30832,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.1903,
+        "margin_of_safety": 4.2665,
+        "natural_freq_Hz": 158.7,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 24.021,
+        "thrust_to_weight": 73.097
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022538627413590903,
+        "chord_tip_m": 0.007296675031338986,
+        "twist_root_deg": 40.93997767243422,
+        "twist_tip_deg": 10.40326007786296,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.04880842563676745,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78346,
+        "noise_reduction_dB": 1.94,
+        "blade_mass_g": 12.2604
+      },
+      "metrics": {
+        "thrust_N": 16.3385,
+        "power_W": 239.243,
+        "torque_Nm": 0.28558,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.5837,
+        "margin_of_safety": 5.3575,
+        "natural_freq_Hz": 167.97,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 24.39,
+        "thrust_to_weight": 68.286
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.023855387734958995,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 41.14043805216483,
+        "twist_tip_deg": 9.55757904226973,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.04226291932759885,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78253,
+        "noise_reduction_dB": 1.42,
+        "blade_mass_g": 9.2794
+      },
+      "metrics": {
+        "thrust_N": 9.9827,
+        "power_W": 114.396,
+        "torque_Nm": 0.13655,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.033,
+        "margin_of_safety": 5.6484,
+        "natural_freq_Hz": 186.95,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 21.409,
+        "thrust_to_weight": 47.531
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.026549925879692123,
+        "chord_tip_m": 0.011300448665700473,
+        "twist_root_deg": 30.441368943013053,
+        "twist_tip_deg": 7.09336757866858,
+        "tubercle_amp_m": 0.002862889998159875,
+        "tubercle_wl_m": 0.05346353267840667,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78221,
+        "noise_reduction_dB": 1.44,
+        "blade_mass_g": 9.4806
+      },
+      "metrics": {
+        "thrust_N": 12.9512,
+        "power_W": 169.114,
+        "torque_Nm": 0.20186,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 20.4761,
+        "margin_of_safety": 2.907,
+        "natural_freq_Hz": 143.35,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 21.61,
+        "thrust_to_weight": 61.091
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02035778301416927,
+        "chord_tip_m": 0.011283496632617462,
+        "twist_root_deg": 38.38853924733758,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.002444810886163521,
+        "tubercle_wl_m": 0.0573184994476178,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78169,
+        "noise_reduction_dB": 1.49,
+        "blade_mass_g": 9.2794
+      },
+      "metrics": {
+        "thrust_N": 9.4939,
+        "power_W": 106.211,
+        "torque_Nm": 0.12678,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 11.6141,
+        "margin_of_safety": 5.8882,
+        "natural_freq_Hz": 186.95,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 21.409,
+        "thrust_to_weight": 45.204
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.026549925879692123,
+        "chord_tip_m": 0.011300448665700473,
+        "twist_root_deg": 30.441368943013053,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.05457477117163963,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.78065,
+        "noise_reduction_dB": 1.52,
+        "blade_mass_g": 8.5713
+      },
+      "metrics": {
+        "thrust_N": 9.5804,
+        "power_W": 107.81,
+        "torque_Nm": 0.12869,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.3448,
+        "margin_of_safety": 4.2135,
+        "natural_freq_Hz": 167.9,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 20.701,
+        "thrust_to_weight": 47.176
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02384434427882307,
+        "chord_tip_m": 0.012973419328407274,
+        "twist_root_deg": 30.441368943013053,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.05810259690327655,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.77968,
+        "noise_reduction_dB": 2.0,
+        "blade_mass_g": 10.8369
+      },
+      "metrics": {
+        "thrust_N": 16.8648,
+        "power_W": 252.111,
+        "torque_Nm": 0.30094,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 17.2196,
+        "margin_of_safety": 3.6459,
+        "natural_freq_Hz": 149.84,
+        "bpf_Hz": 533.33,
+        "total_mass_g": 22.967,
+        "thrust_to_weight": 74.854
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.0212800479656117,
+        "chord_tip_m": 0.007296675031338986,
+        "twist_root_deg": 40.93997767243422,
+        "twist_tip_deg": 10.794775700464902,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.04880842563676745,
+        "n_blades": 4,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.7774,
+        "noise_reduction_dB": 1.56,
+        "blade_mass_g": 8.7361
+      },
+      "metrics": {
+        "thrust_N": 8.9981,
+        "power_W": 98.542,
+        "torque_Nm": 0.11763,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 10.995,
+        "margin_of_safety": 6.276,
+        "natural_freq_Hz": 186.95,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 20.866,
+        "thrust_to_weight": 43.959
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.026549925879692123,
+        "chord_tip_m": 0.009911943630671502,
+        "twist_root_deg": 30.01631526608944,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.06811076154419593,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.76627,
+        "noise_reduction_dB": 1.13,
+        "blade_mass_g": 8.2213
+      },
+      "metrics": {
+        "thrust_N": 9.348,
+        "power_W": 105.86,
+        "torque_Nm": 0.12636,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 12.9898,
+        "margin_of_safety": 5.1587,
+        "natural_freq_Hz": 176.43,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 20.351,
+        "thrust_to_weight": 46.823
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.025056547316894683,
+        "chord_tip_m": 0.01054974923764547,
+        "twist_root_deg": 33.337525168815745,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.002137718783985377,
+        "tubercle_wl_m": 0.07,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.76409,
+        "noise_reduction_dB": 1.69,
+        "blade_mass_g": 10.0871
+      },
+      "metrics": {
+        "thrust_N": 16.421,
+        "power_W": 247.169,
+        "torque_Nm": 0.29504,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 26.4966,
+        "margin_of_safety": 2.0193,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 22.217,
+        "thrust_to_weight": 75.344
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.012821456682305535,
+        "twist_root_deg": 42.27633986611614,
+        "twist_tip_deg": 10.838752459937567,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.04790146880813689,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.7636,
+        "noise_reduction_dB": 1.37,
+        "blade_mass_g": 8.0192
+      },
+      "metrics": {
+        "thrust_N": 13.1591,
+        "power_W": 177.422,
+        "torque_Nm": 0.21178,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 21.1181,
+        "margin_of_safety": 2.7882,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 20.149,
+        "thrust_to_weight": 66.574
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.008775962870113122,
+        "twist_root_deg": 38.70383578559516,
+        "twist_tip_deg": 9.713136362648232,
+        "tubercle_amp_m": 0.0021000191879121787,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.76288,
+        "noise_reduction_dB": 1.16,
+        "blade_mass_g": 6.3027
+      },
+      "metrics": {
+        "thrust_N": 8.4489,
+        "power_W": 91.365,
+        "torque_Nm": 0.10906,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.2553,
+        "margin_of_safety": 3.1547,
+        "natural_freq_Hz": 145.55,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.432,
+        "thrust_to_weight": 46.725
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020670719476277962,
+        "chord_tip_m": 0.010850625829203354,
+        "twist_root_deg": 30.937843027595154,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.001953904029776666,
+        "tubercle_wl_m": 0.07,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.75944,
+        "noise_reduction_dB": 1.71,
+        "blade_mass_g": 8.4048
+      },
+      "metrics": {
+        "thrust_N": 12.4212,
+        "power_W": 163.603,
+        "torque_Nm": 0.19529,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.0445,
+        "margin_of_safety": 4.3175,
+        "natural_freq_Hz": 156.87,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 20.535,
+        "thrust_to_weight": 61.661
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022278528804503362,
+        "chord_tip_m": 0.006514352903890507,
+        "twist_root_deg": 37.08196488745298,
+        "twist_tip_deg": 10.43284382938629,
+        "tubercle_amp_m": 0.0025769620765836083,
+        "tubercle_wl_m": 0.06484896558728055,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.75469,
+        "noise_reduction_dB": 1.63,
+        "blade_mass_g": 6.634
+      },
+      "metrics": {
+        "thrust_N": 9.7244,
+        "power_W": 114.042,
+        "torque_Nm": 0.13613,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.7648,
+        "margin_of_safety": 3.7719,
+        "natural_freq_Hz": 159.73,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.764,
+        "thrust_to_weight": 52.829
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022685419134286105,
+        "chord_tip_m": 0.009242556234054058,
+        "twist_root_deg": 30.877040223650802,
+        "twist_tip_deg": 10.381001491757715,
+        "tubercle_amp_m": 0.0027522091821073845,
+        "tubercle_wl_m": 0.051239212833721876,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.75152,
+        "noise_reduction_dB": 0.98,
+        "blade_mass_g": 6.1731
+      },
+      "metrics": {
+        "thrust_N": 8.6152,
+        "power_W": 95.498,
+        "torque_Nm": 0.11399,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 14.659,
+        "margin_of_safety": 4.4574,
+        "natural_freq_Hz": 161.18,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.303,
+        "thrust_to_weight": 47.982
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022890348822654137,
+        "chord_tip_m": 0.007541443314946857,
+        "twist_root_deg": 30.66850788861039,
+        "twist_tip_deg": 9.047637283759865,
+        "tubercle_amp_m": 0.0015679743245587427,
+        "tubercle_wl_m": 0.042145869693340124,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.751,
+        "noise_reduction_dB": 0.91,
+        "blade_mass_g": 5.522
+      },
+      "metrics": {
+        "thrust_N": 7.9224,
+        "power_W": 84.272,
+        "torque_Nm": 0.10059,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.4545,
+        "margin_of_safety": 3.1122,
+        "natural_freq_Hz": 141.01,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.652,
+        "thrust_to_weight": 45.751
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020026630660218623,
+        "chord_tip_m": 0.009305238485610035,
+        "twist_root_deg": 32.05994973947902,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.0014195846721114572,
+        "tubercle_wl_m": 0.04495401268384653,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.74934,
+        "noise_reduction_dB": 0.24,
+        "blade_mass_g": 5.4149
+      },
+      "metrics": {
+        "thrust_N": 8.9659,
+        "power_W": 101.682,
+        "torque_Nm": 0.12137,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 21.412,
+        "margin_of_safety": 2.7362,
+        "natural_freq_Hz": 141.14,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.545,
+        "thrust_to_weight": 52.093
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020044384433697705,
+        "chord_tip_m": 0.008940868213283664,
+        "twist_root_deg": 28.187632128587193,
+        "twist_tip_deg": 10.73896649047548,
+        "tubercle_amp_m": 0.00036597445351909536,
+        "tubercle_wl_m": 0.0433387964558955,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.74768,
+        "noise_reduction_dB": 0.0,
+        "blade_mass_g": 5.1768
+      },
+      "metrics": {
+        "thrust_N": 7.9861,
+        "power_W": 85.669,
+        "torque_Nm": 0.10226,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.0738,
+        "margin_of_safety": 3.977,
+        "natural_freq_Hz": 150.78,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.307,
+        "thrust_to_weight": 47.039
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021414106421899868,
+        "chord_tip_m": 0.006261585442776451,
+        "twist_root_deg": 25.0,
+        "twist_tip_deg": 11.396705102814508,
+        "tubercle_amp_m": 0.0,
+        "tubercle_wl_m": 0.04911348851567111,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.74667,
+        "noise_reduction_dB": 1.2,
+        "blade_mass_g": 6.3115
+      },
+      "metrics": {
+        "thrust_N": 9.0229,
+        "power_W": 103.022,
+        "torque_Nm": 0.12297,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 16.4516,
+        "margin_of_safety": 3.8627,
+        "natural_freq_Hz": 156.86,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.441,
+        "thrust_to_weight": 49.876
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.0222769805084269,
+        "chord_tip_m": 0.008815598205266057,
+        "twist_root_deg": 33.57454614760378,
+        "twist_tip_deg": 8.452277520391197,
+        "tubercle_amp_m": 0.0019689265027714293,
+        "tubercle_wl_m": 0.052798205021660854,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.7452,
+        "noise_reduction_dB": 0.24,
+        "blade_mass_g": 5.2271
+      },
+      "metrics": {
+        "thrust_N": 8.9095,
+        "power_W": 101.285,
+        "torque_Nm": 0.1209,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 21.1771,
+        "margin_of_safety": 2.7777,
+        "natural_freq_Hz": 141.14,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.357,
+        "thrust_to_weight": 52.326
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020044384433697705,
+        "chord_tip_m": 0.008326409592839206,
+        "twist_root_deg": 26.686023472018736,
+        "twist_tip_deg": 11.932009289662636,
+        "tubercle_amp_m": 0.00036597445351909536,
+        "tubercle_wl_m": 0.0433387964558955,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.73935,
+        "noise_reduction_dB": 1.17,
+        "blade_mass_g": 6.1029
+      },
+      "metrics": {
+        "thrust_N": 8.9966,
+        "power_W": 103.587,
+        "torque_Nm": 0.12365,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.8657,
+        "margin_of_safety": 3.027,
+        "natural_freq_Hz": 146.19,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.233,
+        "thrust_to_weight": 50.299
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020762293196303523,
+        "chord_tip_m": 0.010151937818541217,
+        "twist_root_deg": 36.99917424946098,
+        "twist_tip_deg": 6.911056705411458,
+        "tubercle_amp_m": 0.0019371081916153,
+        "tubercle_wl_m": 0.04991053034454176,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.73595,
+        "noise_reduction_dB": 1.24,
+        "blade_mass_g": 5.6929
+      },
+      "metrics": {
+        "thrust_N": 8.3336,
+        "power_W": 92.777,
+        "torque_Nm": 0.11074,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 17.6422,
+        "margin_of_safety": 3.5346,
+        "natural_freq_Hz": 148.46,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.823,
+        "thrust_to_weight": 47.664
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.021084518498399752,
+        "chord_tip_m": 0.008469422914136568,
+        "twist_root_deg": 35.82124564647512,
+        "twist_tip_deg": 6.911056705411458,
+        "tubercle_amp_m": 0.0019371081916153,
+        "tubercle_wl_m": 0.04946918740697649,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.73407,
+        "noise_reduction_dB": 1.76,
+        "blade_mass_g": 6.2921
+      },
+      "metrics": {
+        "thrust_N": 9.3546,
+        "power_W": 110.622,
+        "torque_Nm": 0.13205,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 22.9591,
+        "margin_of_safety": 2.4845,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.422,
+        "thrust_to_weight": 51.764
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.011633591567023158,
+        "twist_root_deg": 40.51317438199639,
+        "twist_tip_deg": 6.0,
+        "tubercle_amp_m": 0.003,
+        "tubercle_wl_m": 0.04769161609519137,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.73281,
+        "noise_reduction_dB": 1.37,
+        "blade_mass_g": 6.1148
+      },
+      "metrics": {
+        "thrust_N": 9.1359,
+        "power_W": 106.949,
+        "torque_Nm": 0.12766,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.7124,
+        "margin_of_safety": 4.0915,
+        "natural_freq_Hz": 159.73,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.244,
+        "thrust_to_weight": 51.045
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022685419134286105,
+        "chord_tip_m": 0.007640800154920529,
+        "twist_root_deg": 33.22288653151386,
+        "twist_tip_deg": 10.876063107199395,
+        "tubercle_amp_m": 0.00217542830486623,
+        "tubercle_wl_m": 0.051239212833721876,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.7311,
+        "noise_reduction_dB": 1.24,
+        "blade_mass_g": 5.6567
+      },
+      "metrics": {
+        "thrust_N": 9.6609,
+        "power_W": 116.57,
+        "torque_Nm": 0.13915,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 23.1073,
+        "margin_of_safety": 2.4621,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.786,
+        "thrust_to_weight": 55.368
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.00975976013535407,
+        "twist_root_deg": 34.60419593048691,
+        "twist_tip_deg": 10.8440008878198,
+        "tubercle_amp_m": 0.0019689265027714293,
+        "tubercle_wl_m": 0.032505717540601844,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.72581,
+        "noise_reduction_dB": 1.25,
+        "blade_mass_g": 6.0279
+      },
+      "metrics": {
+        "thrust_N": 9.0443,
+        "power_W": 106.359,
+        "torque_Nm": 0.12696,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.6317,
+        "margin_of_safety": 4.1178,
+        "natural_freq_Hz": 159.42,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.158,
+        "thrust_to_weight": 50.774
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02264119405391552,
+        "chord_tip_m": 0.007421828790436225,
+        "twist_root_deg": 34.60419593048691,
+        "twist_tip_deg": 10.8440008878198,
+        "tubercle_amp_m": 0.0019689265027714293,
+        "tubercle_wl_m": 0.042057323736778715,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.72563,
+        "noise_reduction_dB": 1.49,
+        "blade_mass_g": 5.994
+      },
+      "metrics": {
+        "thrust_N": 9.555,
+        "power_W": 115.524,
+        "torque_Nm": 0.1379,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 23.1376,
+        "margin_of_safety": 2.4576,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 18.124,
+        "thrust_to_weight": 53.742
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.010775480250416788,
+        "twist_root_deg": 40.51317438199639,
+        "twist_tip_deg": 7.89887636258111,
+        "tubercle_amp_m": 0.0024557765247658907,
+        "tubercle_wl_m": 0.05205233574517476,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.69704,
+        "noise_reduction_dB": 0.22,
+        "blade_mass_g": 5.1272
+      },
+      "metrics": {
+        "thrust_N": 8.6981,
+        "power_W": 104.451,
+        "torque_Nm": 0.12468,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.3227,
+        "margin_of_safety": 3.1402,
+        "natural_freq_Hz": 144.63,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.257,
+        "thrust_to_weight": 51.38
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020539713247028114,
+        "chord_tip_m": 0.007319872618027067,
+        "twist_root_deg": 33.071288390170125,
+        "twist_tip_deg": 13.867057923892386,
+        "tubercle_amp_m": 0.00032422900663226076,
+        "tubercle_wl_m": 0.04329365878113924,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.68884,
+        "noise_reduction_dB": 0.23,
+        "blade_mass_g": 4.8124
+      },
+      "metrics": {
+        "thrust_N": 8.049,
+        "power_W": 94.087,
+        "torque_Nm": 0.11231,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 17.9533,
+        "margin_of_safety": 3.456,
+        "natural_freq_Hz": 144.63,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 16.942,
+        "thrust_to_weight": 48.429
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020539713247028114,
+        "chord_tip_m": 0.006191272860539916,
+        "twist_root_deg": 33.071288390170125,
+        "twist_tip_deg": 13.867057923892386,
+        "tubercle_amp_m": 0.00032422900663226076,
+        "tubercle_wl_m": 0.04329365878113924,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.68573,
+        "noise_reduction_dB": 0.09,
+        "blade_mass_g": 4.7611
+      },
+      "metrics": {
+        "thrust_N": 7.9308,
+        "power_W": 92.44,
+        "torque_Nm": 0.11034,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 17.7088,
+        "margin_of_safety": 3.5175,
+        "natural_freq_Hz": 144.63,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 16.891,
+        "thrust_to_weight": 47.863
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.020539713247028114,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 33.071288390170125,
+        "twist_tip_deg": 14.00431888198403,
+        "tubercle_amp_m": 0.0001296035305469474,
+        "tubercle_wl_m": 0.03318756361438659,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.65563,
+        "noise_reduction_dB": 1.83,
+        "blade_mass_g": 6.833
+      },
+      "metrics": {
+        "thrust_N": 11.987,
+        "power_W": 179.658,
+        "torque_Nm": 0.21445,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 19.0782,
+        "margin_of_safety": 3.1933,
+        "natural_freq_Hz": 140.83,
+        "bpf_Hz": 400.0,
+        "total_mass_g": 18.963,
+        "thrust_to_weight": 64.438
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.02,
+        "chord_tip_m": 0.006,
+        "twist_root_deg": 42.534346394047205,
+        "twist_tip_deg": 20.0,
+        "tubercle_amp_m": 0.0024819297305336365,
+        "tubercle_wl_m": 0.03,
+        "n_blades": 3,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    },
+    {
+      "objectives": {
+        "figure_of_merit": 0.63826,
+        "noise_reduction_dB": 1.92,
+        "blade_mass_g": 5.7054
+      },
+      "metrics": {
+        "thrust_N": 8.8151,
+        "power_W": 116.381,
+        "torque_Nm": 0.13892,
+        "tip_mach": 0.3102,
+        "von_mises_MPa": 15.4085,
+        "margin_of_safety": 4.1919,
+        "natural_freq_Hz": 158.55,
+        "bpf_Hz": 266.67,
+        "total_mass_g": 17.835,
+        "thrust_to_weight": 50.383
+      },
+      "constraints": {
+        "performance_ok": true,
+        "structural_pass": true,
+        "tip_mach_ok": true,
+        "no_resonance": true,
+        "produces_thrust": true
+      },
+      "feasible": true,
+      "design": {
+        "chord_root_m": 0.022517773721432693,
+        "chord_tip_m": 0.006519892116919536,
+        "twist_root_deg": 38.972668256597345,
+        "twist_tip_deg": 19.267589985014922,
+        "tubercle_amp_m": 0.002913684242094039,
+        "tubercle_wl_m": 0.044669004108469273,
+        "n_blades": 2,
+        "prop_radius_m": 0.127,
+        "hub_radius_m": 0.012,
+        "hub_height_m": 0.022,
+        "shaft_hole_r_m": 0.003,
+        "thickness_ratio": 0.12,
+        "rpm": 8000.0,
+        "total_thrust_N": 15.0,
+        "total_torque_Nm": 0.35,
+        "rho_air": 1.225
+      }
+    }
+  ]
+}

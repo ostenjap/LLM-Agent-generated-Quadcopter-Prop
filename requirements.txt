@@ -1,0 +1,15 @@
+# Core — required to run the optimization loop
+numpy>=1.24
+
+# Recommended — better sampling + the Pareto plot
+scipy>=1.10            # Latin-hypercube seeding (falls back to uniform if absent)
+matplotlib>=3.7        # writes docs/pareto.png (skipped if absent)
+
+# Phase 2 — Gaussian-Process surrogate (src/surrogate/gp_model.py)
+scikit-learn>=1.3
+
+# Phase 4 — CAD export of the winning geometry (not needed for the loop itself)
+# cadquery>=2.4
+
+# The local-LLM swarm talks to Ollama over plain HTTP (stdlib only — no package).
+# Install Ollama separately and: ollama pull qwen2.5-coder:7b && ollama pull phi4-mini
