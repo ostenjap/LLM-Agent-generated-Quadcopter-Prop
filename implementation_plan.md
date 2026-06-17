@@ -63,7 +63,7 @@ graph TD
 LLM Agent generated Quadcopter Propeller/
 ├── cad/                     # Generated STEP/STL files
 ├── cfd/                     # Local OpenFOAM case directories
-├── data/                    # JSON optimization logs, run history, and Pareto data
+├── data/                    # SQLite store of record (research.db), journal.md, Pareto exports
 ├── docs/                    # Generated reports, Pareto plots, and metric logs
 ├── src/
 │   ├── autoresearch/        # Optimization loop orchestration
@@ -128,6 +128,94 @@ To ensure design feasibility and prevent mechanical failure, the following const
   2. **Surrogate Training**: Train the GP model on the design parameters vs. performance metrics.
   3. **Bayesian Optimization (Infill)**: Use Expected Improvement (EI) or Upper Confidence Bound (UCB) to identify candidate designs that balance exploration (high uncertainty) and exploitation (high predicted performance).
   4. **CFD Verification**: Run full local OpenFOAM CFD on the top selected candidate to verify performance and update the training set.
+
+---
+
+## Data & State Persistence (SQLite store of record)
+
+All structured run data lives in a single SQLite file, **`data/research.db`**,
+created in Phase 0. SQLite is chosen because it is atomic/ACID (crash-safe — a
+killed process can never corrupt a half-written row, which is what makes the
+unattended auto-restart/resume reliable), queryable, server-less, and ships with
+Python (`sqlite3`). It runs in **WAL mode** so progress can be inspected live
+while the loop is running.
+
+**Division of responsibility (hybrid by design):**
+- **`data/research.db`** — source of truth for designs, scores, constraints, run
+  state, and debug events.
+- **Files** (`cad/`, `cfd/`) — large artifacts (STEP/STL, OpenFOAM cases, meshes).
+  The DB stores only their *path*, never the blob.
+- **`data/journal.md`** — human-readable narrative (one scribe line per generation).
+
+**Schema:**
+
+```sql
+-- one row per optimization run; drives crash-resume
+CREATE TABLE runs (
+  run_id      INTEGER PRIMARY KEY,
+  started_at  TEXT NOT NULL,
+  finished_at TEXT,
+  status      TEXT NOT NULL,            -- running | done | crashed | stopped
+  phase       INTEGER NOT NULL,         -- 0..4, last phase entered
+  last_gen    INTEGER DEFAULT 0,        -- last completed generation (resume point)
+  config_json TEXT                      -- budget, bounds, model routing snapshot
+);
+
+-- every candidate design proposed (the 7-field vector)
+CREATE TABLE designs (
+  design_id      INTEGER PRIMARY KEY,
+  run_id         INTEGER NOT NULL REFERENCES runs(run_id),
+  generation     INTEGER NOT NULL,
+  source         TEXT,                  -- proposer | mutator | coder | surrogate | baseline
+  chord_root_m   REAL, chord_tip_m   REAL,
+  twist_root_deg REAL, twist_tip_deg REAL,
+  tubercle_amp_m REAL, tubercle_wl_m REAL,
+  n_blades       INTEGER,
+  created_at     TEXT NOT NULL,
+  UNIQUE(run_id, chord_root_m, chord_tip_m, twist_root_deg,
+         twist_tip_deg, tubercle_amp_m, tubercle_wl_m, n_blades)  -- dedup
+);
+
+-- one row per evaluation of a design (analytical or CFD)
+CREATE TABLE evals (
+  eval_id        INTEGER PRIMARY KEY,
+  design_id      INTEGER NOT NULL REFERENCES designs(design_id),
+  evaluator      TEXT NOT NULL,         -- analytical | surrogate | cfd
+  fm             REAL,                  -- Figure of Merit (objective)
+  thrust_n       REAL,                  -- thrust, N (objective)
+  noise_db       REAL,                  -- noise reduction vs baseline, dB (objective)
+  tip_mach       REAL,
+  von_mises_mpa  REAL,
+  watertight     INTEGER,               -- 0/1
+  constraints_ok INTEGER NOT NULL,      -- 0/1, all constraints satisfied
+  artifact_path  TEXT,                  -- path to STEP/CFD case if any
+  evaluated_at   TEXT NOT NULL
+);
+
+-- debug / diagnostics trail (LLM I/O, solver events, errors)
+CREATE TABLE events (
+  event_id   INTEGER PRIMARY KEY,
+  run_id     INTEGER REFERENCES runs(run_id),
+  ts         TEXT NOT NULL,
+  level      TEXT NOT NULL,             -- info | warn | error
+  role       TEXT,                      -- proposer | mutator | cfd_analyst | researcher | ...
+  message    TEXT,
+  payload    TEXT                       -- raw LLM output / log tail / stack trace
+);
+
+-- Pareto front membership snapshot per generation
+CREATE TABLE pareto_snapshots (
+  run_id     INTEGER NOT NULL REFERENCES runs(run_id),
+  generation INTEGER NOT NULL,
+  design_id  INTEGER NOT NULL REFERENCES designs(design_id),
+  PRIMARY KEY (run_id, generation, design_id)
+);
+```
+
+**Resume contract:** on "go to work", read the latest `runs` row; if its status is
+`running`/`crashed`, continue that run from `last_gen + 1`. Update `runs.status`,
+`runs.phase`, and `runs.last_gen` inside the same transaction that writes a
+generation's `designs`/`evals` so state and data can never disagree after a crash.
 
 ---
 

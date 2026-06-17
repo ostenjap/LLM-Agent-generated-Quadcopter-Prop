@@ -1,0 +1,2 @@
+# Phase 0 ports here from ../quadcopter/src/optimization:
+#   design.py  evaluate.py  performance.py  pareto.py  (+ mass.py if reused)
