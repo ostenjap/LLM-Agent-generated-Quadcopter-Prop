@@ -18,6 +18,16 @@
 
 ---
 
+## Callable skill
+
+To just **run** the optimizer (not build it), use the skill at
+[`skills/run-propeller-optimizer/SKILL.md`](skills/run-propeller-optimizer/SKILL.md).
+Trigger phrases: "run the optimizer", "run the propeller loop", "resume the run",
+"kick off the overnight run". It covers fresh runs, `--resume`, the swarm, and the
+overnight runner. The full build-from-scratch program is below.
+
+---
+
 ## ▶ GO TO WORK
 
 When the operator says **"go to work"** (or "go", "start", "continue"), do this
