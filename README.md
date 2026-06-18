@@ -70,6 +70,58 @@ smarter about where to look as it goes.
 
 ---
 
+## How it works (agents + physics)
+
+The one rule that makes this trustworthy: **the AI agents only ever *propose*
+designs — they never score them.** Scoring is done by plain physics code that
+can't be talked into a wrong answer. Here's the whole loop:
+
+```mermaid
+flowchart TD
+    OBJ["Antigravity sets the objective<br/>quiet · efficient · high thrust"]
+
+    subgraph propose["PROPOSE — agents only suggest (never score)"]
+        P["Proposer<br/>local LLM"]
+        M["Mutator<br/>local LLM"]
+        C["Coder<br/>writes a search operator"]
+        GA["Deterministic GA<br/>always runs, guarantees progress"]
+    end
+
+    CAND["candidate designs<br/>(7 parameters each)"]
+
+    subgraph score["SCORE — trusted physics, no LLM (the ground truth)"]
+        PERF["performance.py<br/>BEMT hover → thrust, Figure of Merit"]
+        TUB["tubercle_analysis.py<br/>→ noise reduction (dB)"]
+        STR["propeller_physics.py<br/>→ stress, resonance"]
+        V["evaluate.py<br/>objectives + constraints → feasible?"]
+        PERF --> V
+        TUB --> V
+        STR --> V
+    end
+
+    SEL["pareto.py<br/>keep the non-dominated designs"]
+    DB[("SQLite research.db<br/>every design + score")]
+    REF["Antigravity reflects<br/>steers the next generation"]
+    CAD["generate_propeller.py<br/>STEP / STL + watertight check"]
+    CFD["cfd_verify.py<br/>OpenFOAM truth check"]
+
+    OBJ --> P & M & C & GA
+    P & M & C & GA --> CAND
+    CAND --> PERF & TUB & STR
+    V --> SEL
+    SEL --> DB --> REF
+    REF -->|next generation| P
+    SEL -->|best designs| CAD --> CFD
+```
+
+Read it left-to-right, top-to-bottom: the agents (and a deterministic genetic
+algorithm that always runs as a safety net) throw out candidate designs → the
+physics scripts score each one → the non-dominated winners are kept and saved →
+Antigravity looks at the winners and steers the next round → the loop repeats.
+The best designs eventually drop out the bottom into CAD and CFD verification.
+
+---
+
 ## How it remembers (and survives a crash)
 
 The loop can run for hours, so it can't keep everything in its head. It writes
@@ -121,6 +173,37 @@ restart caps), logs everything, and leaves a one-line verdict in
 `data/RUN_STATUS.txt` for you to read with your coffee. Drop a file named `STOP`
 in this folder to stop it cleanly. If you wire in a Telegram token, it'll message
 you when it's done.
+
+---
+
+## Results so far (V1)
+
+First full run of the pipeline. The optimizer explored a few hundred feasible
+designs and mapped the trade-off surface between the three goals:
+
+![V1 results](docs/v1_results.png)
+
+The red rings are the **Pareto front** — designs that aren't beaten on all three
+goals at once, i.e. the current menu of best trade-offs. The bottom-right panel
+shows the search improving generation over generation.
+
+The best efficiency pick (Figure of Merit 0.867, 38 N thrust, 6 blades) was
+exported to CAD and passed the watertightness check:
+
+![best design preview](docs/best_fm_preview.png)
+
+> Honest caveat: these scores come from the fast analytical physics, and this
+> winner sits against the edges of the allowed design range — so treat V1 as a
+> working pipeline and a first map, not a final answer. CFD verification and a
+> re-run with reviewed bounds come next.
+
+Regenerate these anytime:
+
+```bash
+cd src
+python plot_results.py        # docs/v1_results.png
+python export_best.py         # cad/best_fm.* + validity report
+```
 
 ---
 
