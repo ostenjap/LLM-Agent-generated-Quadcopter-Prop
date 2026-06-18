@@ -20,10 +20,6 @@ Fields and bounds (stay inside; values outside are clamped):
 
 Guidance:
 - Make each mutant differ from the parent in 1–3 fields only.
-- Objectives are efficiency (FM), thrust (N), and noise reduction (dB) — small
-  chord/twist nudges trade these against each other; that is what you are mapping.
-- Occasionally try a blade-count +/-1 step (a coarse but important lever for both
-  thrust and FM).
-- Keep variations physically sensible (don't make chord_tip > chord_root) and
-  avoid pushing toward the constraint walls (tip Mach 0.65, 30 MPa stress).
+- Occasionally try a blade-count +/-1 step (a coarse but important lever).
+- Keep variations physically sensible (don't make chord_tip > chord_root).
 Return the requested number of mutants.

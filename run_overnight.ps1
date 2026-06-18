@@ -76,8 +76,14 @@ if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
     }
 }
 
+# Stream Python output live into the log instead of block-buffering it: without
+# this, a multi-hour run's log stays empty until the buffer fills or the process
+# exits (short runs flushed on exit, which is why they looked fine).
+$env:PYTHONUNBUFFERED = '1'
+
 # --- build the researcher command --------------------------------------------
-$baseArgs = "-m autoresearch.researcher --budget $Budget"
+# -u = unbuffered stdout/stderr, so the redirected log updates in real time.
+$baseArgs = "-u -m autoresearch.researcher --budget $Budget"
 if ($NoLLM) { $baseArgs += ' --no-llm' }
 
 Write-Log "=== Overnight AutoResearch run started ==="
@@ -118,7 +124,7 @@ while ($true) {
     # run the researcher, appending its stdout+stderr to our log
     Push-Location $srcDir
     try {
-        & cmd /c "$cmdStr 1>> `"$logFile`" 2>>&1"
+        & cmd /c "$cmdStr 1>> `"$logFile`" 2>&1"
         $code = $LASTEXITCODE
     } finally { Pop-Location }
 

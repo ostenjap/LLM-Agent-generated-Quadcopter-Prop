@@ -18,9 +18,9 @@ from pathlib import Path
 class Objective:
     description: str = (
         "Find Pareto-optimal 10-inch quadcopter propellers that maximize hover "
-        "Figure of Merit, maximize thrust, and maximize tubercle noise reduction, "
-        "subject to structural margin >= 0, tip Mach < 0.65, and no blade-pass "
-        "resonance."
+        "Figure of Merit, maximize tubercle noise reduction, and minimize blade "
+        "mass, subject to structural margin >= 0, tip Mach < 0.6, and no "
+        "blade-pass resonance."
     )
     time_budget_s: float = 120.0      # wall-clock stop rule
     concurrency: int = 3              # logical swarm concurrency

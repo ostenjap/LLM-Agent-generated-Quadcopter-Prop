@@ -21,6 +21,7 @@ import random
 import time
 from pathlib import Path
 from typing import List
+from dataclasses import asdict
 
 import numpy as np
 
@@ -30,17 +31,15 @@ from .notebook import ResearchNotebook
 from . import swarm
 from . import sandbox
 from . import local_llm
-from .store import Store
+from . import db_store
 
 from optimization.design import Design, BOUNDS, SEARCH_VARS, random_design
 from optimization.evaluate import evaluate, OBJECTIVES
 
 SKILLS_DIR = Path(__file__).resolve().parent / "skills"
-ROOT = _SRC.parent                      # project root
+ROOT = _SRC.parent                      # quadcopter/
 OUT_DATA = ROOT / "data" / "optimization"
 OUT_DOCS = ROOT / "docs"
-DB_PATH = ROOT / "data" / "research.db"
-JOURNAL_MD = ROOT / "data" / "journal.md"
 
 BOUND_LIST = [[BOUNDS[v][0], BOUNDS[v][1]] for v in SEARCH_VARS]
 
@@ -50,19 +49,6 @@ BOUND_LIST = [[BOUNDS[v][0], BOUNDS[v][1]] for v in SEARCH_VARS]
 # ---------------------------------------------------------------------------
 def load_skill(name: str) -> str:
     return (SKILLS_DIR / f"{name}.md").read_text(encoding="utf-8")
-
-
-def _append_journal(gen: int, entry: str):
-    """Append a one-line human-readable note to data/journal.md (the DB mirror)."""
-    JOURNAL_MD.parent.mkdir(parents=True, exist_ok=True)
-    if not JOURNAL_MD.exists():
-        JOURNAL_MD.write_text("# AutoResearch Journal\n\n"
-                              "One line per generation. `data/research.db` is the "
-                              "source of truth; this is the human-readable mirror.\n\n",
-                              encoding="utf-8")
-    ts = time.strftime("%Y-%m-%d %H:%M:%S")
-    with open(JOURNAL_MD, "a", encoding="utf-8") as f:
-        f.write(f"- `{ts}` **gen {gen}** — {entry}\n")
 
 
 def design_from_partial(d: dict) -> Design:
@@ -126,8 +112,8 @@ def front_summary(front: List[dict], limit: int = 8) -> str:
     for r in front[:limit]:
         o, d = r["objectives"], r["design"]
         lines.append(
-            f'FM={o["figure_of_merit"]:.3f} thrust={o["thrust_N"]:.1f}N '
-            f'noise={o["noise_reduction_dB"]:.2f}dB | B={d["n_blades"]} '
+            f'FM={o["figure_of_merit"]:.3f} noise={o["noise_reduction_dB"]:.2f} '
+            f'thrust={o["thrust_N"]:.2f}N | B={d["n_blades"]} '
             f'cr={d["chord_root_m"]:.3f} ct={d["chord_tip_m"]:.3f} '
             f'tw={d["twist_root_deg"]:.0f}/{d["twist_tip_deg"]:.0f} '
             f'amp={d["tubercle_amp_m"]:.4f} wl={d["tubercle_wl_m"]:.3f}'
@@ -223,106 +209,132 @@ def run(obj: Objective, resume: bool = False):
     rng = random.Random(obj.seed)
     nb = ResearchNotebook(obj.description)
 
-    # SQLite store of record (crash-safe; survives restarts) -----------------
-    store = Store(DB_PATH)
-    gen0 = 0
-    if resume and store.resume_latest():
-        prior = store.load_results(store.run_id)
-        nb.add(prior)
-        gen0 = store.last_gen()
-        print(f"  RESUMED run {store.run_id} from generation {gen0} "
-              f"({len(prior)} prior designs reloaded)")
-    else:
-        store.start_run({"objective": obj.description, "seed": obj.seed,
-                         "budget_s": obj.time_budget_s, "use_llm": obj.use_llm,
-                         "phase": 1})
-
     llm_up = obj.use_llm and local_llm.available()
     print("=" * 64)
     print("  Propeller Autoresearch - Karpathy loop")
     print(f"  budget={obj.time_budget_s:.0f}s  concurrency={obj.concurrency}  "
           f"LLM swarm={'ON ('+', '.join(local_llm.list_models())+')' if llm_up else 'OFF (deterministic GA)'}")
     print("=" * 64)
-    store.log_event("info", "run started", role="researcher",
-                    payload=f"llm={llm_up} resume={resume}")
 
-    # Seed: baseline + LHS  (skipped on resume — we already have a population)
-    if gen0 == 0:
+    run_id = None
+    gen = 0
+    
+    if resume:
+        latest = db_store.get_latest_run()
+        if latest:
+            run_id = latest["run_id"]
+            gen = latest["last_gen"]
+            db_store.update_run_status(run_id, "running")
+            # Load prior results
+            prior_results = db_store.load_all_run_results(run_id)
+            nb.add(prior_results)
+            print(f"  Resumed run {run_id} from DB at generation {gen}. Loaded {len(prior_results)} designs.")
+            db_store.log_event(run_id, "info", "researcher", f"Resumed run from generation {gen}")
+        else:
+            print("  No previous run found to resume. Starting fresh.")
+
+    if run_id is None:
+        run_id = db_store.start_run(0, asdict(obj))
+        print(f"  Started new run {run_id} in DB.")
+        db_store.log_event(run_id, "info", "researcher", "Started fresh run")
+        
+        # Seed: baseline + LHS
         seed_designs = [Design()] + lhs_designs(obj.lhs_per_gen * 2, rng)
         seed_results = [r for r in (safe_eval(d) for d in seed_designs) if r]
+        # Tag seed results source
+        for r in seed_results:
+            r["source"] = "baseline" if r["design"]["chord_root_m"] == Design().chord_root_m else "lhs"
+            
         nb.add(seed_results)
         nb.log_generation(0, len(seed_results),
                           sum(r["feasible"] for r in seed_results),
                           reflection="seed population")
-        store.record_generation(0, seed_results, nb.front())
-        _append_journal(0, f"seeded {len(seed_results)} designs, "
-                           f"front={len(nb.front())}")
+        
+        db_store.save_generation(run_id, 0, seed_results, "analytical")
         print(f"  gen 0: seeded {len(seed_results)} designs, "
               f"front={len(nb.front())}")
 
     t0 = time.time()
     deadline = t0 + obj.time_budget_s
-    gen = gen0
     reflection = ""
+    
     while time.time() < deadline:
         gen += 1
         front = nb.front()
         candidates: List[Design] = []
+        sources = []
 
-        # 1+2. swarm propose + mutate (best-effort). Each local-LLM call is slow
-        # on a small GPU, so skip remaining swarm steps once the budget is spent;
-        # the fast deterministic GA below always runs and banks progress.
+        # 1+2. swarm propose + mutate (best-effort).
         if llm_up and time.time() < deadline:
-            candidates += swarm_propose(obj, front, reflection)
+            proposed = swarm_propose(obj, front, reflection)
+            for d in proposed:
+                d_dict = d.to_dict()
+                candidates.append(d)
+                sources.append("proposer")
+                
             if time.time() < deadline:
-                candidates += swarm_mutate(obj, front)
+                mutants = swarm_mutate(obj, front)
+                for d in mutants:
+                    candidates.append(d)
+                    sources.append("mutator")
+                    
             # 2b. occasionally let a coder write a sandboxed operator
             if gen % obj.code_every == 0 and time.time() < deadline:
                 coded = swarm_code_operator(front, seed=rng.randint(0, 10**6))
                 if coded:
                     print(f"  gen {gen}: coder operator produced {len(coded)} children")
-                candidates += coded
+                    for d in coded:
+                        candidates.append(d)
+                        sources.append("coder")
 
         # deterministic operators always run (guarantees progress)
         parents = [r for r in front]
-        candidates += ga_mutants([design_from_partial(r["design"]) for r in parents],
-                                 obj.mutants_per_gen, rng)
-        candidates += lhs_designs(obj.lhs_per_gen, rng)
+        ga_m = ga_mutants([design_from_partial(r["design"]) for r in parents],
+                           obj.mutants_per_gen, rng)
+        for d in ga_m:
+            candidates.append(d)
+            sources.append("ga_mutant")
+            
+        lhs_m = lhs_designs(obj.lhs_per_gen, rng)
+        for d in lhs_m:
+            candidates.append(d)
+            sources.append("lhs")
 
         # 3. EVALUATE (ground truth)
-        new_results = [r for r in (safe_eval(d) for d in candidates) if r]
+        new_results = []
+        for d, src in zip(candidates, sources):
+            r = safe_eval(d)
+            if r:
+                r["source"] = src
+                new_results.append(r)
+                
         n_feas = sum(r["feasible"] for r in new_results)
 
         # 4. SELECT
         nb.add(new_results)
+        
+        # Save results of this generation in DB
+        db_store.save_generation(run_id, gen, new_results, "analytical")
 
         # 5. REFLECT (steers next gen) — skip if no next gen will run
         if llm_up and gen % obj.reflect_every == 0 and time.time() < deadline:
             reflection = swarm_reflect(obj, nb.front())
+            if reflection:
+                db_store.log_event(run_id, "info", "analyst", f"Reflection: {reflection}")
 
-        # 6. SCRIBE (journal + SQLite store of record, committed atomically)
+        # 6. SCRIBE (journal)
         nb.log_generation(gen, len(new_results), n_feas, reflection or None)
         front = nb.front()
         best_fm = max((r["objectives"]["figure_of_merit"] for r in front), default=0)
-        best_thr = max((r["objectives"]["thrust_N"] for r in front), default=0)
-        try:
-            store.record_generation(gen, new_results, front)
-            _append_journal(gen, f"+{len(new_results)} eval ({n_feas} feasible), "
-                                f"front={len(front)}, bestFM={best_fm:.3f}, "
-                                f"bestThrust={best_thr:.1f}N"
-                                + (f" | {reflection}" if reflection else ""))
-        except Exception as e:
-            store.log_event("error", f"failed to persist gen {gen}: {e}",
-                            role="store")
         elapsed = time.time() - t0
         print(f"  gen {gen:2d}: +{len(new_results):3d} eval ({n_feas} feasible)  "
               f"front={len(front):3d}  bestFM={best_fm:.3f}  [{elapsed:.0f}s]")
 
-    store.finish_run("done")
-    store.close()
-
     # ---- report ----
     paths = nb.save(OUT_DATA, OUT_DOCS)
+    db_store.update_run_status(run_id, "done", finished=True)
+    db_store.log_event(run_id, "info", "researcher", "Finished run successfully")
+    
     front = nb.front()
     print("\n" + "=" * 64)
     print(f"  DONE  generations={gen}  evaluated={len(nb.results)}  "
@@ -334,7 +346,7 @@ def run(obj: Objective, resume: bool = False):
         if best:
             o, d = best["objectives"], best["design"]
             print(f"   * best {obj_name:18s}: FM={o['figure_of_merit']:.3f} "
-                  f"thrust={o['thrust_N']:.1f}N noise={o['noise_reduction_dB']:.2f}dB "
+                  f"noise={o['noise_reduction_dB']:.2f} thrust={o['thrust_N']:.2f}N "
                   f"| B={d['n_blades']} cr={d['chord_root_m']:.3f} "
                   f"tw={d['twist_root_deg']:.0f}/{d['twist_tip_deg']:.0f} "
                   f"amp={d['tubercle_amp_m']:.4f} wl={d['tubercle_wl_m']:.3f}")
@@ -376,9 +388,8 @@ if __name__ == "__main__":
     ap.add_argument("--concurrency", type=int, default=3)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--no-llm", action="store_true", help="deterministic GA only")
-    ap.add_argument("--resume", action="store_true",
-                    help="continue the latest unfinished run from data/research.db")
     ap.add_argument("--config", help="path to an Objective JSON")
+    ap.add_argument("--resume", action="store_true", help="resume the latest run from DB")
     args = ap.parse_args()
 
     obj = Objective.load(args.config)

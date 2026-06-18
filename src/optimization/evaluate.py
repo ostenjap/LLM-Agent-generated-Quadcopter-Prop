@@ -14,8 +14,8 @@ evaluate(design) returns a flat dict with:
 Objectives
 ----------
   figure_of_merit      maximize  (hover efficiency, BEMT-lite)
-  thrust_N             maximize  (total thrust at the design RPM)
   noise_reduction_dB   maximize  (tubercle acoustic benefit -> quieter)
+  blade_mass_g         minimize  (lighter is better)
 """
 
 from __future__ import annotations
@@ -32,11 +32,11 @@ from tubercle_analysis import full_report as tubercle_report
 # objective name -> "max" | "min"
 OBJECTIVES = {
     "figure_of_merit":    "max",
-    "thrust_N":           "max",
     "noise_reduction_dB": "max",
+    "thrust_N":            "max",
 }
 
-TIP_MACH_LIMIT = 0.65        # plan: tip speed < Mach 0.65 (~220 m/s)
+TIP_MACH_LIMIT = 0.6
 RESONANCE_GUARD_HZ = 15.0
 
 
@@ -74,8 +74,8 @@ def evaluate(design: Design) -> dict:
 
     objectives = {
         "figure_of_merit":    round(perf.figure_of_merit, 5),
-        "thrust_N":           round(perf.thrust_N, 4),
         "noise_reduction_dB": round(noise_reduction, 4),
+        "thrust_N":           round(perf.thrust_N, 4),
     }
 
     return {
@@ -89,7 +89,6 @@ def evaluate(design: Design) -> dict:
             "margin_of_safety":  round(srpt.margin_of_safety, 4),
             "natural_freq_Hz":   round(fn, 2),
             "bpf_Hz":            round(bpf, 2),
-            "blade_mass_g":      round(blade_mass, 4),
             "total_mass_g":      round(total_mass, 3),
             "thrust_to_weight":  round(perf.thrust_N / (total_mass / 1000.0 * 9.81), 3)
                                  if total_mass > 0 else 0.0,
