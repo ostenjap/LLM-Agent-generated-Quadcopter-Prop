@@ -46,12 +46,8 @@ def _format_ts(ts_str: str | None) -> str:
     if not ts_str:
         return "—"
     try:
-        # replace T with space and strip microseconds
         t = ts_str.replace("T", " ")
-        parts = t.split(" ")
-        if len(parts) > 1:
-            return parts[1].split(".")[0]
-        return ts_str.split(".")[0]
+        return t.split(".")[0]
     except Exception:
         return ts_str
 
