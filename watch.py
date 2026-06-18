@@ -23,13 +23,17 @@ HOST, PORT = "127.0.0.1", 8765
 REFRESH_S = 4
 
 
+START_OVERRIDE = None
+
+
 def q(conn, sql, args=()):
     return conn.execute(sql, args).fetchall()
 
 
 def _elapsed(started: str) -> str:
+    global START_OVERRIDE
     try:
-        t0 = datetime.datetime.fromisoformat(started)
+        t0 = START_OVERRIDE if START_OVERRIDE is not None else datetime.datetime.fromisoformat(started)
         secs = int((datetime.datetime.now() - t0).total_seconds())
         h, rem = divmod(secs, 3600)
         m, s = divmod(rem, 60)
@@ -124,7 +128,8 @@ def render() -> str:
       <div class="status"><span class="dot" style="background:{dot}"></span>{status}
         &nbsp;·&nbsp; gen <b>{run['last_gen']}</b>
         &nbsp;·&nbsp; phase {run['phase']}
-        &nbsp;·&nbsp; elapsed {_elapsed(run['started_at'])}</div>
+        &nbsp;·&nbsp; elapsed {_elapsed(run['started_at'])} <a href="/restart" class="btn">Restart</a>
+        &nbsp;·&nbsp; last time updated <b>{datetime.datetime.now().strftime('%H:%M:%S')}</b></div>
     </div>
 
     <div class="cards">
@@ -162,6 +167,9 @@ PAGE = """<!doctype html><html><head><meta charset="utf-8">
   h1{{font-size:20px;margin:0}} h2{{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#8b949e;margin:18px 0 8px}}
   .dim{{color:#8b949e}} small{{color:#8b949e;font-size:60%}}
   .head{{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-bottom:1px solid #21262d;padding-bottom:14px}}
+  .btn{{background:#21262d;border:1px solid #30363d;color:#c9d1d9;padding:3px 8px;font-size:11px;border-radius:6px;cursor:pointer;transition:all .2s ease;text-decoration:none;margin-left:6px;display:inline-block}}
+  .btn:hover{{background:#30363d;border-color:#8b949e}}
+  .btn:active{{background:#282e38}}
   .status{{font-size:14px}} .dot{{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}}
   .cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}}
   .card{{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:14px}}
@@ -180,6 +188,13 @@ PAGE = """<!doctype html><html><head><meta charset="utf-8">
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
+        global START_OVERRIDE
+        if self.path == "/restart":
+            START_OVERRIDE = datetime.datetime.now()
+            self.send_response(303)
+            self.send_header("Location", "/")
+            self.end_headers()
+            return
         try:
             body = render()
         except Exception as e:
