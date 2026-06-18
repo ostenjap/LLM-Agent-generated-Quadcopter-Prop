@@ -42,6 +42,20 @@ def _elapsed(started: str) -> str:
         return "?"
 
 
+def _format_ts(ts_str: str | None) -> str:
+    if not ts_str:
+        return "—"
+    try:
+        # replace T with space and strip microseconds
+        t = ts_str.replace("T", " ")
+        parts = t.split(" ")
+        if len(parts) > 1:
+            return parts[1].split(".")[0]
+        return ts_str.split(".")[0]
+    except Exception:
+        return ts_str
+
+
 def _sparkline(points, color, w=320, h=48):
     """Tiny inline SVG line for a per-generation series."""
     vals = [p for p in points if p is not None]
@@ -99,6 +113,17 @@ def render() -> str:
 
     events = q(conn, "SELECT ts, level, role, message FROM events "
                      "WHERE run_id=? ORDER BY event_id DESC LIMIT 12", (rid,))
+    
+    last_data_res = q(conn,
+                      "SELECT MAX(ts) AS last_ts FROM ("
+                      "  SELECT MAX(e.evaluated_at) AS ts FROM evals e JOIN designs d ON d.design_id=e.design_id WHERE d.run_id=? "
+                      "  UNION "
+                      "  SELECT MAX(created_at) AS ts FROM designs WHERE run_id=? "
+                      "  UNION "
+                      "  SELECT MAX(ts) AS ts FROM events WHERE run_id=? "
+                      ")", (rid, rid, rid))
+    last_data_ts = last_data_res[0]["last_ts"] if last_data_res else None
+
     conn.close()
 
     dot = {"running": "#3fb950", "done": "#58a6ff",
@@ -129,7 +154,7 @@ def render() -> str:
         &nbsp;·&nbsp; gen <b>{run['last_gen']}</b>
         &nbsp;·&nbsp; phase {run['phase']}
         &nbsp;·&nbsp; elapsed {_elapsed(run['started_at'])} <a href="/restart" class="btn">Restart</a>
-        &nbsp;·&nbsp; last time updated <b>{datetime.datetime.now().strftime('%H:%M:%S')}</b></div>
+        &nbsp;·&nbsp; last time updated <b>{_format_ts(last_data_ts)}</b></div>
     </div>
 
     <div class="cards">
