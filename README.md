@@ -5,7 +5,7 @@
 <h1 align="center">A drone propeller, designed by a team of AIs</h1>
 
 <p align="center">
-  <em>An autonomous multi-agent system that designs, simulates, and optimizes 3D-printable quadcopter propellers using free, local LLMs (Ollama) and OpenFOAM.</em>
+  <em>An autonomous multi-agent system for parametric design, simulation, and multi-objective optimization of 3D-printable quadcopter propellers — powered by free, local LLMs (Ollama), CadQuery, and OpenFOAM CFD.</em>
 </p>
 
 <p align="center">
@@ -13,6 +13,8 @@
   <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/LLMs-100%25_Local_(Ollama)-orange.svg" alt="Local LLMs">
   <img src="https://img.shields.io/badge/API_Cost-$0-brightgreen.svg" alt="API Cost: $0">
+  <img src="https://img.shields.io/badge/CAD-CadQuery_(Parametric)-blueviolet.svg" alt="CadQuery Parametric CAD">
+  <img src="https://img.shields.io/badge/CFD-OpenFOAM-red.svg" alt="OpenFOAM CFD">
 </p>
 
 <!-- 📌 TODO: Add Colab badge once notebooks/demo.ipynb is committed
@@ -251,6 +253,64 @@ because the model never has to be right on the first try — it just has to be r
 
 ---
 
+## For CAD & CFD engineers
+
+If you work with OpenFOAM, CadQuery, or parametric design tools, this project
+is also a working reference for automating the design-simulate-optimize loop.
+Here's what's under the hood that you can reuse or learn from:
+
+### Parametric CAD (CadQuery)
+
+Every propeller is defined by 7 parameters — chord at root and tip, twist
+distribution, tubercle amplitude and wavelength, and blade count. The
+[`generate_propeller.py`](src/generate_propeller.py) script takes these 7 numbers
+and produces a watertight STEP/STL via CadQuery, with:
+
+- **Airfoil cross-sections** lofted along the span with linear twist
+- **Leading-edge tubercles** (sinusoidal bumps inspired by humpback whale fins)
+  for noise reduction
+- **Automatic watertightness checking** before any design enters the CFD pipeline
+- **STEP + STL export** ready for meshing, printing, or further CAD work
+
+This is fully programmatic — no GUI, no manual steps. If you want to adapt
+it for a different part (turbine blade, heat exchanger fin, any swept surface),
+the parametric structure is designed to be swapped in.
+
+### Multi-objective optimization (BEMT + Pareto)
+
+The physics scoring stack is hand-written, not an LLM:
+
+- **BEMT hover analysis** ([`src/optimization/`](src/optimization/)) — Blade Element
+  Momentum Theory for thrust and Figure of Merit at a fixed RPM and diameter
+- **Tubercle noise model** ([`src/tubercle_analysis.py`](src/tubercle_analysis.py)) —
+  analytical estimate of noise reduction from leading-edge serrations
+- **Structural checks** ([`src/propeller_physics.py`](src/propeller_physics.py)) —
+  centrifugal stress, resonance frequency clearance, tip Mach constraint
+- **Non-dominated sorting** — true Pareto front over three objectives
+  (efficiency, noise, thrust), not a weighted sum
+
+The surrogate (Gaussian Process, scikit-learn) learns from evaluated designs and
+proposes infill points via Expected Improvement, reducing how many full
+evaluations you need.
+
+### OpenFOAM automation
+
+The [`setup_openfoam_case.py`](src/setup_openfoam_case.py) script generates a
+complete OpenFOAM case directory from a STEP file:
+
+- **snappyHexMesh** dictionary with castellated/snap/layer settings tuned for
+  propeller geometry
+- **simpleFoam** with k-ω SST turbulence and appropriate boundary conditions
+- **Force coefficient extraction** from `postProcessing/forces/`
+- **Automated convergence checking** — the CFD Analyst agent reads residuals and
+  applies one fix at a time (relaxation factors, time step, mesh quality) when
+  the solver diverges
+
+The CFD step is optional — the analytical loop runs standalone and fast. But
+when you want ground-truth validation, the pipeline is ready.
+
+---
+
 ## How it remembers (and survives a crash)
 
 The loop can run for hours, so it can't keep everything in its head. It writes
@@ -339,17 +399,24 @@ python export_best.py         # cad/best_fm.* + validity report
 ## Where to look if you're poking around
 
 | Path | What's there |
-|------|--------------| 
+|------|--------------|
 | [`implementation_plan.md`](implementation_plan.md) | The full design — read this to understand the whole system |
 | [`AGENTS.md`](AGENTS.md) | The agent's instructions and the "go to work" steps |
 | `src/autoresearch/skills/` | The actual prompts given to each AI worker — surprisingly readable |
-| `src/optimization/` | The trusted referee: the physics and scoring code |
+| `src/optimization/` | BEMT performance, multi-objective evaluation, Pareto sorting |
+| `src/generate_propeller.py` | Parametric CadQuery geometry — the CAD pipeline |
+| `src/setup_openfoam_case.py` | OpenFOAM case generation (mesh, solver, BCs) |
+| `src/propeller_physics.py` | Structural analysis — stress, resonance, tip Mach |
+| `src/tubercle_analysis.py` | Tubercle noise reduction model |
 | `data/research.db` | The memory — every design and result |
-| `cad/` | The propeller shapes it produces (STEP + Python) |
+| `cad/` | The propeller shapes it produces (STEP + STL) |
 
-A good first move is to open one of the files in `src/autoresearch/skills/`. Those
-are the plain-English instructions the AI workers are running on — it's the
-clearest window into how the whole thing actually thinks.
+**If you're an LLM developer:** start with `src/autoresearch/skills/` — those are
+the plain-English prompts the AI workers run on.
+
+**If you're a CAD/CFD engineer:** start with `src/generate_propeller.py` and
+`src/setup_openfoam_case.py` — those are the parametric geometry and simulation
+pipelines you can adapt for your own parts.
 
 ---
 
