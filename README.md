@@ -381,6 +381,11 @@ exported to CAD and passed the watertightness check:
 
 ![best design preview](docs/best_fm_preview.png)
 
+*Actual 3D CAD model rendering of the generated 6-blade propeller:*
+<p align="center">
+  <img src="docs/generated_propeller.png" alt="Generated 6-Blade Propeller" width="80%">
+</p>
+
 > Honest caveat: these scores come from the fast analytical physics, and this
 > winner sits against the edges of the allowed design range — so treat V1 as a
 > working pipeline and a first map, not a final answer. CFD verification and a
