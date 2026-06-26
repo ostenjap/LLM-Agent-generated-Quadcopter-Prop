@@ -1,4 +1,29 @@
-# A drone propeller, designed by a team of AIs
+<p align="center">
+  <img src="docs/hero_banner.png" alt="Propeller designed by AI agents" width="100%">
+</p>
+
+<h1 align="center">A drone propeller, designed by a team of AIs</h1>
+
+<p align="center">
+  <em>An autonomous multi-agent system that designs, simulates, and optimizes 3D-printable quadcopter propellers using free, local LLMs (Ollama) and OpenFOAM.</em>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/LLMs-100%25_Local_(Ollama)-orange.svg" alt="Local LLMs">
+  <img src="https://img.shields.io/badge/API_Cost-$0-brightgreen.svg" alt="API Cost: $0">
+</p>
+
+<!-- 📌 TODO: Add Colab badge once notebooks/demo.ipynb is committed
+<p align="center">
+  <a href="https://colab.research.google.com/github/ostenjap/LLM-Agent-generated-Quadcopter-Prop/blob/main/notebooks/demo.ipynb">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
+  </a>
+</p>
+-->
+
+---
 
 This project tries to answer a simple question: instead of an engineer hand-tweaking
 a propeller and testing it over and over, can we let a group of AI models do that
@@ -122,6 +147,110 @@ The best designs eventually drop out the bottom into CAD and CFD verification.
 
 ---
 
+## The prompt system — how 7B models write real CAD code
+
+> This is the part most transferable to your own projects. Every prompt is
+> readable plain English, and you can copy the pattern for any domain
+> where you want a small local model to generate structured, validated output.
+
+The secret to making a 7B model reliably produce working CAD code and valid design
+parameters is **role separation + sandboxed execution + self-correction**. Each
+worker gets a single, constrained job with a strict output schema.
+
+### The worker hierarchy
+
+| Worker | Model | What it does | Output |
+|--------|-------|-------------|--------|
+| **Proposer** | `qwen2.5-coder:7b` | Brainstorms brand-new designs from scratch | JSON array of 7-parameter design vectors |
+| **Mutator** | `qwen2.5-coder:7b` | Takes a good design and creates small variations | JSON array of tweaked vectors |
+| **Coder** | `qwen2.5-coder:7b` | Writes a Python search operator (mutation function) | JSON `{"code": "..."}` |
+| **CFD Analyst** | `phi4-mini` | Reads OpenFOAM logs and diagnoses solver failures | JSON `{"status": "...", "fix": "..."}` |
+| **Scribe** | `phi4-mini` | Writes one-line journal entries | Plain text |
+
+### How the Proposer prompt looks (actual file)
+
+This is `src/autoresearch/skills/proposer.md` — the full prompt that a 7B model
+receives. Notice: no vague instructions, just hard bounds and domain knowledge:
+
+```
+You are a PROPELLER DESIGN PROPOSER in an automated research swarm.
+
+Your job: propose NEW candidate propeller designs that might improve hover
+efficiency, increase tubercle noise reduction, or reduce blade mass.
+
+You output ONLY JSON. No prose, no markdown. The schema is:
+{"designs": [
+  {"chord_root_m": <float>, "chord_tip_m": <float>,
+   "twist_root_deg": <float>, "twist_tip_deg": <float>,
+   "tubercle_amp_m": <float>, "tubercle_wl_m": <float>,
+   "n_blades": <int>},
+  ...
+]}
+
+Hard bounds (stay inside these; values outside are clamped):
+  chord_root_m   : 0.020 .. 0.034
+  chord_tip_m    : 0.006 .. 0.014
+  twist_root_deg : 25 .. 45
+  twist_tip_deg  : 6 .. 20
+  tubercle_amp_m : 0.0 .. 0.005
+  tubercle_wl_m  : 0.020 .. 0.060
+  n_blades       : 2 .. 6 (integer)
+```
+
+### How the Coder's code gets sandboxed
+
+The Coder writes arbitrary Python, which is dangerous. The
+[sandbox](src/autoresearch/sandbox.py) handles it in two layers:
+
+1. **AST allowlist** — before execution, an AST walker rejects any `import` outside
+   `{math, numpy, random}`, any dunder access, and any dangerous builtin (`open`,
+   `exec`, `eval`, `os`, `subprocess`, etc.)
+2. **Subprocess isolation** — the screened code runs in a fresh Python process with
+   a hard timeout and a scratch working directory. Only a JSON line on stdout is
+   accepted back.
+
+If the code is invalid, times out, or returns garbage, it's silently discarded —
+worst case is a wasted generation slot, never a corrupted archive:
+
+```python
+# The sandbox contract (from sandbox.py):
+def mutate(parents, bounds, rng):
+    # parents : list of design vectors
+    # bounds  : list of [lo, hi] for each variable
+    # rng     : random.Random instance (for reproducibility)
+    # returns : list of NEW design vectors
+    ...
+
+# STRICT sandbox rules (violations → operator discarded):
+# - Import ONLY: math, numpy, random. Nothing else.
+# - No file/network/system access, no open/exec/eval.
+# - Must return within 5 seconds.
+# - Every value clamped into [lo, hi] bounds.
+```
+
+### The self-correction loop
+
+When something fails — a bad mesh, a diverging CFD solver, malformed JSON — the
+error is fed back to the responsible worker with the diagnostic context. The
+CFD Analyst, for example, gets the tail of the solver log and the residual values,
+and must return exactly *one concrete fix* to try next:
+
+```json
+{"status": "diverging",
+ "diagnosis": "U residuals climbing after iteration 200, likely Courant violation",
+ "fix": "reduce deltaT from 1e-3 to 5e-4",
+ "fields": {"deltaT": "5e-4"}}
+```
+
+This is the pattern: **structured output → validation → auto-retry**. It works
+because the model never has to be right on the first try — it just has to be right
+*eventually*, within a budget of retries.
+
+> 📂 All six worker prompts are in [`src/autoresearch/skills/`](src/autoresearch/skills/)
+> — read them directly, they're short and self-contained.
+
+---
+
 ## How it remembers (and survives a crash)
 
 The loop can run for hours, so it can't keep everything in its head. It writes
@@ -210,7 +339,7 @@ python export_best.py         # cad/best_fm.* + validity report
 ## Where to look if you're poking around
 
 | Path | What's there |
-|------|--------------|
+|------|--------------| 
 | [`implementation_plan.md`](implementation_plan.md) | The full design — read this to understand the whole system |
 | [`AGENTS.md`](AGENTS.md) | The agent's instructions and the "go to work" steps |
 | `src/autoresearch/skills/` | The actual prompts given to each AI worker — surprisingly readable |
@@ -221,3 +350,19 @@ python export_best.py         # cad/best_fm.* + validity report
 A good first move is to open one of the files in `src/autoresearch/skills/`. Those
 are the plain-English instructions the AI workers are running on — it's the
 clearest window into how the whole thing actually thinks.
+
+---
+
+## Star History
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=ostenjap/LLM-Agent-generated-Quadcopter-Prop&type=Date&theme=dark">
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=ostenjap/LLM-Agent-generated-Quadcopter-Prop&type=Date">
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ostenjap/LLM-Agent-generated-Quadcopter-Prop&type=Date" width="600">
+</picture>
+
+---
+
+## License
+
+[MIT](LICENSE) — use it, fork it, build on it.
